@@ -1,5 +1,6 @@
 {
   "predef": [
+    "server",
     "document",
     "window",
     "location",
@@ -23,6 +24,7 @@
     "currentPath",
     "currentRouteName"
   ],
+  "asi": true,
   "node": false,
   "browser": false,
   "boss": true,

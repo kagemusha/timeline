@@ -1,9 +1,11 @@
 {
   "predef": [
+    "server",
     "document",
     "window",
     "-Promise"
   ],
+  "asi": true,
   "browser": true,
   "boss": true,
   "curly": true,

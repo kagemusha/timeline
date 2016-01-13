@@ -1,0 +1,21 @@
+<div id="CurrentCardPanel">
+  <div id="CurrentCardPanel-player">
+    Card 1 of {{game.cards.length}}
+  </div>
+  <div id="CurrentCardPanel-card">
+    Current card: {{currentCard.event}}
+  </div>
+</div>
+<div id="Timeline">
+  Timeline ({{game.timelineCards.length}})
+  <ul>
+    <li><button class="Timeline-placeCardButton" {{action 'placeCard' -1}}>Place card</button></li>
+    {{#each game.timelineCards as |card i|}}
+      <li class="Timeline-card">
+        {{card.event}} {{card.year}}
+      </li>
+      <li><button class="Timeline-placeCardButton" {{action 'placeCard' i}}>Place card</button></li>
+    {{/each}}
+  </ul>
+</div>
+

@@ -1,0 +1,12 @@
+{
+  "preset": "ember-suave",
+  "requireSemicolons": false,
+  "disallowTrailingComma": false,
+  "validateQuoteMarks": false,
+  "disallowSpacesInsideParentheses": false,
+  "requireSpaceBeforeBlockStatements": false,
+  "requireCamelCaseOrUpperCaseIdentifiers": false,
+  "requireSpaceAfterLineComment": false,
+  "requireArrayDestructuring": false,
+  "disallowMultipleLineBreaks": false
+}
