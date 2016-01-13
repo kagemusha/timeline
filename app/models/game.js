@@ -53,7 +53,7 @@ export default DS.Model.extend({
     const card = this.get('currentCard');
     const cardYear = card.get('year')
     const timeline = this.get('timelineCards');
-    const priorYear = position === -1 ? -5000000000 : timeline.objectAt(0).get('year');
+    const priorYear = position === -1 ? -5000000000 : timeline.objectAt(position).get('year');
 
     const placedAtEnd = position === timeline.get('length') - 1;
     // up this sometime before the year 30000 edition ;-)
