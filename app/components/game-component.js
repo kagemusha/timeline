@@ -10,11 +10,22 @@ export default Ember.Component.extend({
     const game = this.get('game');
     game.restart();
   },
+  turnObserver: Ember.observer('game.turns.each.[]', function() {
+    Ember.run.next((() => {
+      const lastTurnWrong = this.get('game.turns.lastObject.result') === false;
+      console.log(`last card`, this.get('game.turns.lastObject.card.event'));
+      if (lastTurnWrong) {
+        this.set('showWrongModal', true);
+      }
+    }))
+  }),
 
   actions: {
     placeCard(position) {
-      console.log(`place at`, position);
       this.get('game').placeCardAt(position);
+    },
+    toggleWrong() {
+      this.toggleProperty('showWrongModal');
     }
   }
 });

@@ -13,12 +13,17 @@ export default DS.Model.extend({
     const turns = this.get('turns');
     return turns.mapBy('card');
   }),
+  lastCardIfWrong: computed('playedCards.each.[]', function(){
+    const lastTurn = this.get('turns.lastObject');
+    const lastWasWrong = lastTurn && (lastTurn.get('result') === false )
+    return lastWasWrong ? lastTurn.get('card') : false;
+  }),
   timelineCards: computed('playedCards.each.[]', function(){
-    const turns = this.get('turns').filterBy('result', 'right');
+    const turns = this.get('turns').filterBy('result', true);
     return turns ? turns.mapBy('card').sortBy('year') : [];
   }),
   discardedCards: computed('playedCards.each.[]', function(){
-    const turns = this.get('turns').filterBy('result', 'wrong');
+    const turns = this.get('turns').filterBy('result', false);
     return turns ? turns.mapBy('card').sortBy('year') : [];
   }),
   pile: computed('cards','playedCards.each.[]', function(){
@@ -40,7 +45,7 @@ export default DS.Model.extend({
   addResult(result) {
     const turn = this.store.createRecord('turn', {
       card: this.get('currentCard'),
-      result: result
+      result
     })
     this.get('turns').addObject(turn)
   },
@@ -54,14 +59,13 @@ export default DS.Model.extend({
     // up this sometime before the year 30000 edition ;-)
     const nextYear = placedAtEnd ? 3000 : timeline.objectAt(position+1).get('year');
 
-    const result = (cardYear >= priorYear && cardYear <= nextYear) ? "right" : "wrong"
+    const result = (cardYear >= priorYear && cardYear <= nextYear);
     this.addResult(result);
   },
   currentCard: computed.readOnly('pile.firstObject'),
   restart(){
     this.shuffleCards();
-    this.addResult('right');
-  }
-
+    this.addResult(true);
+  },
 
 });
