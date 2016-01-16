@@ -8,7 +8,12 @@ export default DS.Model.extend({
   players: hasMany('player'),
   cards: hasMany('cards'),
   turns: hasMany('turn'),
-
+  createPlayers(names) {
+    names = names.filter(Boolean);
+    for (const name of names) {
+      this.get('players').addObject(this.store.createRecord('player', {name: name}))
+    }
+  },
   playedCards: computed('turns.each.[]', function(){
     const turns = this.get('turns');
     return turns.mapBy('card');

@@ -1,3 +1,12 @@
+<div>
+  Players:
+  <ul>
+    {{#each game.players  as |player| }}
+      <li class="Game-playerName">{{player.name}}</li>
+    {{/each}}
+  </ul>
+</div>
+<br/>
 <div id="CurrentCardPanel">
   <div id="CurrentCardPanel-player">
     Card {{game.playedCards.length}} of {{game.cards.length}}
