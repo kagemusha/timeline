@@ -13,5 +13,6 @@ export default PageObject.create({
   placeCard(position) {
     click(`.Timeline-placeCardButton:eq(${position+1})`)
   },
-  playerNames: textList('.Game-playerName')
+  playerNames: textList('.Game-playerName'),
+  cardsRemaining: textList('.Game-cardsRemaining')
 });

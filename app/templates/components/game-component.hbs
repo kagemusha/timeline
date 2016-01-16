@@ -1,12 +1,12 @@
-<div>
-  Players:
-  <ul>
-    {{#each game.players  as |player| }}
-      <li class="Game-playerName">{{player.name}}</li>
-    {{/each}}
-  </ul>
+<div id="Game-players">
+  {{#each game.players  as |player i| }}
+    <div class="Game-player">
+      <div class="Game-playerName">{{player.name}}</div>
+      <div class="Game-cardsRemaining">{{player.cardsRemaining}}</div>
+    </div>
+  {{/each}}
 </div>
-<br/>
+
 <div id="CurrentCardPanel">
   <div id="CurrentCardPanel-player">
     Card {{game.playedCards.length}} of {{game.cards.length}}

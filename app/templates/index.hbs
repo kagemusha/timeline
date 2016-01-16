@@ -1,7 +1,11 @@
 <h3>Enter Players</h3>
 <ul class="names-list">
-  {{#each names  as |name i| }}
-    <li>Player {{i}}: {{input class='playerName' value=name.name}}</li>
+  {{#each players  as |player i| }}
+    <li>
+      Player {{i}}:
+      {{input class='playerName' value=player.name}}
+      {{input class='cardsRemaining' value=player.cardsRemaining}}
+    </li>
   {{/each}}
 </ul>
 <button class="NewGame" {{action 'newGame'}} >New Game</button>

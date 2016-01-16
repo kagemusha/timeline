@@ -18,9 +18,11 @@ test('visiting /', function(assert) {
 test('create game', function(assert) {
   visit('/');
   page.playerName1('yuma')
+  page.playerCardsRemaining0('12')
   page.clickButton('New Game')
   andThen(function() {
     assert.equal(currentURL(), '/game/null'); //todo fix
     assert.deepEqual(gamePage.playerNames(), ['Herodotus', 'yuma'])
+    assert.deepEqual(gamePage.cardsRemaining(), ['12', '10'])
   });
 });
