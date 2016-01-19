@@ -1,11 +1,74 @@
+#Game-top {
+  width: 100%;
+  background: lightgray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+#Game-board {
+  margin-top: 11rem;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
 #Game-players {
+  position: absolute;
+  left: 10px;
+  top: 10px;
   display: flex;
 }
 
 .Game-player {
-  padding: 4px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 4rem;
+  width: 6rem;
 }
 
 .Game-playerName {
   font-weight: bold;
+}
+
+#Timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 4rem;
+}
+
+.Timeline-card {
+  margin: 1rem;
+  width: 14rem;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background: white;
+}
+
+.Timeline-card-event {
+  text-align: center;
+}
+
+.Timeline-placeCardButton {
+  text-align: center;
+  border: 1px solid black;
+  width: 4rem;
+  display: inline-block;
+  cursor: pointer;
 }

@@ -1,35 +1,41 @@
-<div id="Game-players">
-  {{#each game.players  as |player i| }}
-    <div class="Game-player">
-      <div class="Game-playerName">{{player.name}}</div>
-      <div class="Game-cardsRemaining">{{player.cardsRemaining}}</div>
-    </div>
-  {{/each}}
-</div>
-
-<div id="CurrentCardPanel">
+<div id="Game-top">
   <div id="CurrentCardPanel-player">
     Card {{game.playedCards.length}} of {{game.cards.length}}
   </div>
   {{#if game.lastCardIfWrong}}
     <div id="CurrentCardPanel-lastWrongCard">
-      Last card: {{game.lastCardIfWrong.event}} {{game.lastCardIfWrong.year}}
+      Last wrong card: {{game.lastCardIfWrong.event}} {{game.lastCardIfWrong.year}}
     </div>
   {{/if}}
   <div id="CurrentCardPanel-card">
-    Current card: {{currentCard.event}}
+    <div class="Timeline-card">
+    {{currentCard.event}}
+    </div>
   </div>
 </div>
-<div id="Timeline">
-  <ul>
-    <li><button class="Timeline-placeCardButton" {{action 'placeCard' -1}}>Place card</button></li>
-    {{#each game.timelineCards as |card i|}}
-      <li class="Timeline-card">
-        {{card.event}} {{card.year}}
-      </li>
-      <li><button class="Timeline-placeCardButton" {{action 'placeCard' i}}>Place card</button></li>
+
+<div id="Game-board">
+
+  <div id="Game-players">
+    {{#each game.players  as |player i| }}
+      <div class="Game-player">
+        <div class="Game-playerName">{{player.name}}</div>
+        <div class="Game-cardsRemaining">{{player.cardsRemaining}}</div>
+      </div>
     {{/each}}
-  </ul>
+  </div>
+
+  <div id="Timeline">
+      <div class="Timeline-placeCardButton" {{action 'placeCard' -1}}>&nbsp;</div>
+      {{#each game.timelineCards as |card i|}}
+        <div class="Timeline-card">
+          <div class="Timeline-card-year">{{card.year}}</div>
+          <div class="Timeline-card-event">{{card.event}}</div>
+        </div>
+        <div class="Timeline-placeCardButton" {{action 'placeCard' i}}>&nbsp;</div>
+      {{/each}}
+  </div>
+
 </div>
 
 {{#if showWrongModal}}
