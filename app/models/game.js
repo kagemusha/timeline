@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import _ from 'lodash/lodash';
 
 const { hasMany } = DS;
 const { computed } = Ember;
@@ -8,6 +9,7 @@ export default DS.Model.extend({
   players: hasMany('player'),
   cards: hasMany('cards'),
   turns: hasMany('turn'),
+  pile: DS.attr('array'),
 
   playerCardCounts: DS.attr(),
 
@@ -34,31 +36,18 @@ export default DS.Model.extend({
     const turns = this.get('turns').filterBy('result', false);
     return turns ? turns.mapBy('card').sortBy('year') : [];
   }),
-  pile: computed('cards','playedCards.each.[]', function(){
-    const cards = this.get('cards');
-    const playedCards = this.get('playedCards');
-    if (Ember.isBlank(playedCards)) {
-      return cards;
-    }
-
-    //must do this b/c playedCards are promise objects
-    const playedEvents = playedCards.mapBy('event');
-    return cards.filter(function(card){
-      return playedEvents.indexOf(card.get('event')) === -1;
-    });
-  }),
-  shuffleCards() {
-
-  },
   addResult(result) {
+    const cardIndex = this.get('pile').shift();
+    const card = this.get('cards').objectAt(cardIndex);
     const turn = this.store.createRecord('turn', {
-      card: this.get('currentCard'),
+      card: card,
       result
     })
     this.get('turns').addObject(turn)
   },
   placeCardAt(position) {
-    const card = this.get('currentCard');
+    const cardIndex = this.get('currentCardIndex')
+    const card = this.get('cards').objectAt(cardIndex);
     const cardYear = card.get('year')
     const timeline = this.get('timelineCards');
     const priorYear = position === -1 ? -5000000000 : timeline.objectAt(position).get('year');
@@ -70,10 +59,26 @@ export default DS.Model.extend({
     const result = (cardYear >= priorYear && cardYear <= nextYear);
     this.addResult(result);
   },
-  currentCard: computed.readOnly('pile.firstObject'),
+  // base on turns, as pile doesn't propagate updates (since no a model?)
+  currentCardIndex: computed('turns.[]', function(){
+    const pile = this.get('pile')
+    return Ember.isEmpty(pile) ? -1 : this.get('pile')[0]
+  }),
+  currentCard: computed('currentCardIndex', 'cards', function(){
+    const index =  this.get('currentCardIndex')
+    return index > -1 ? this.get('cards').objectAt(index) : null
+  }),
+
   restart(){
-    this.shuffleCards();
+    this.getPile();
     this.addResult(true);
+  },
+
+  getPile() {
+    const cardLength = this.get('cards.length');
+    let pile = Array.from(Array(cardLength).keys());
+    pile = _.shuffle(pile)
+    this.set('pile', Ember.A(pile))
   },
 
 });

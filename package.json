@@ -40,6 +40,7 @@
     "ember-data": "2.2.0",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-lodash": "0.0.6",
     "ember-modal-dialog": "0.8.3",
     "ember-normalize": "0.0.9",
     "ember-tether": "0.2.0",
