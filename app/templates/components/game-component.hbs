@@ -1,12 +1,14 @@
 <div id="Game-top">
   <div id="Game-players">
     {{#each game.players  as |player i| }}
-      <div class="Game-player">
-        <div class="Game-playerName">{{player.name}}</div>
-        <div class="Game-cardsRemaining">{{player.cardsRemaining}}</div>
-      </div>
+      {{player-component player=player currentPlayer=game.currentPlayer}}
     {{/each}}
   </div>
+  {{#if gameEnded}}
+    <div id="Game-winner">
+      {{game.winner.name}} won!!!
+    </div>
+  {{/if}}
 </div>
 
 <div id="Game-board">
@@ -19,21 +21,25 @@
       </div>
     {{/if}}
     <div id="CurrentCardPanel-card">
-      <div class="Timeline-card">
+      <div class="Timeline-card {{if gameEnded 'game-ended'}}" >
         <div class="Timeline-card-event">{{currentCard.event}}</div>
       </div>
     </div>
   </div>
 
   <div id="Timeline">
+    {{#unless gameEnded}}
       <div class="Timeline-placeCardButton" {{action 'placeCard' -1}}>&nbsp;</div>
-      {{#each game.timelineCards as |card i|}}
-        <div class="Timeline-card">
-          <div class="Timeline-card-year">{{card.year}}</div>
-          <div class="Timeline-card-event">{{card.event}}</div>
-        </div>
+    {{/unless}}
+    {{#each game.timelineCards as |card i|}}
+      <div class="Timeline-card {{if gameEnded 'game-ended'}}" >
+        <div class="Timeline-card-year">{{card.year}}</div>
+        <div class="Timeline-card-event">{{card.event}}</div>
+      </div>
+      {{#unless gameEnded}}
         <div class="Timeline-placeCardButton" {{action 'placeCard' i}}>&nbsp;</div>
-      {{/each}}
+      {{/unless}}
+    {{/each}}
   </div>
 
 </div>

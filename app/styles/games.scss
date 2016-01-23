@@ -1,17 +1,32 @@
 #Game-top {
   width: 100%;
-  background: lightgray;
+  padding: 10px 0;
+  background: black;
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid black;
+  z-index: 100;
 }
 
 #Game-players {
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Game-winner {
+  background: yellow;
+  font-size: 24px;
+  font-weight: bold;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  margin: 4px 0;
 }
 
 .Game-player {
@@ -19,10 +34,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: white;
   border: 1px solid black;
   height: 4rem;
-  width: 6rem;
+  width: 10rem;
+  &.is-current-player {
+    background: yellow;
+  }
 }
+
 
 .Game-playerName {
   font-weight: bold;
@@ -56,6 +76,9 @@
   border: 1px solid black;
   background: white;
   padding: 6px;
+  &.game-ended {
+    background: lightgray;
+  }
 }
 
 .Timeline-card-event {

@@ -10,8 +10,15 @@ export default DS.Model.extend({
   cards: hasMany('cards'),
   turns: hasMany('turn'),
   pile: DS.attr('array'),
-
+  winner: null,
+  gameEnded: computed.bool('winner'),
   playerCardCounts: DS.attr(),
+  currentPlayer: computed('turns.length', function() {
+    const turnCount = this.get('turns.length') - 1; // since first turn not a player turn
+    const playerCount = this.get('players.length');
+    const currentPlayerIndex = turnCount % playerCount;
+    return this.get('players').objectAt(currentPlayerIndex);
+  }),
 
   createPlayers(players) {
     players = players.filter(player => !!player.get('name'));
@@ -39,12 +46,25 @@ export default DS.Model.extend({
   addResult(result) {
     const cardIndex = this.get('pile').shift();
     const card = this.get('cards').objectAt(cardIndex);
+    const player = this.get('currentPlayer');
+    if (result && player) {
+      player.decrementProperty('cardsRemaining');
+    }
     const turn = this.store.createRecord('turn', {
-      card: card,
-      result
+      card,
+      player,
+      result,
     })
     this.get('turns').addObject(turn)
+    this.checkIfWinner(player);
   },
+
+  checkIfWinner(player) {
+    if (player && player.get('cardsRemaining') === 0) {
+      this.set('winner', player);
+    } //or if run out of cards
+  },
+
   placeCardAt(position) {
     const cardIndex = this.get('currentCardIndex')
     const card = this.get('cards').objectAt(cardIndex);

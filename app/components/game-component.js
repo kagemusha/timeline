@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   classNames: ['game'],
   //game: Ember.computed.readOnly("gameService.game"),
   currentCard: Ember.computed.readOnly("game.currentCard"),
+  gameEnded: Ember.computed.readOnly("game.gameEnded"),
 
   didInsertElement() {
     const game = this.get('game');

@@ -1,15 +1,18 @@
 import Ember from 'ember';
 
 const INITIAL_PLAYER_COUNT = 4;
+const INITIAL_CARD_COUNT = 15;
 
 export default Ember.Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     let players = [];
     for(let i = 0; i < INITIAL_PLAYER_COUNT; i++) {
-      players.push(this.store.createRecord('player', {name: null, cardsRemaining: 10}));
+      players.push(this.store.createRecord('player', {name: null, cardsRemaining: INITIAL_CARD_COUNT}));
     }
     players[0].set('name', 'Herodotus');
+    players[1].set('name', 'Livy');
+    players[2].set('name', 'Gibbons');
     controller.set('players', players)
   },
 
