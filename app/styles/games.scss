@@ -5,25 +5,12 @@
   top: 0;
   left: 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-bottom: 2px solid black;
 }
 
-#Game-board {
-  margin-top: 11rem;
-  width: 100%;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
-
 #Game-players {
-  position: absolute;
-  left: 10px;
-  top: 10px;
   display: flex;
 }
 
@@ -39,6 +26,15 @@
 
 .Game-playerName {
   font-weight: bold;
+}
+
+#Game-board {
+  margin-top: 11rem;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 #Timeline {
@@ -59,6 +55,7 @@
   justify-content: center;
   border: 1px solid black;
   background: white;
+  padding: 6px;
 }
 
 .Timeline-card-event {

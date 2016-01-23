@@ -1,21 +1,4 @@
 <div id="Game-top">
-  <div id="CurrentCardPanel-player">
-    Card {{game.playedCards.length}} of {{game.cards.length}}
-  </div>
-  {{#if game.lastCardIfWrong}}
-    <div id="CurrentCardPanel-lastWrongCard">
-      Last wrong card: {{game.lastCardIfWrong.event}} {{game.lastCardIfWrong.year}}
-    </div>
-  {{/if}}
-  <div id="CurrentCardPanel-card">
-    <div class="Timeline-card">
-    {{currentCard.event}}
-    </div>
-  </div>
-</div>
-
-<div id="Game-board">
-
   <div id="Game-players">
     {{#each game.players  as |player i| }}
       <div class="Game-player">
@@ -23,6 +6,23 @@
         <div class="Game-cardsRemaining">{{player.cardsRemaining}}</div>
       </div>
     {{/each}}
+  </div>
+</div>
+
+<div id="Game-board">
+
+  <div id="CurrentCardPanel">
+    Card {{game.playedCards.length}} of {{game.cards.length}}
+    {{#if game.lastCardIfWrong}}
+      <div id="CurrentCardPanel-lastWrongCard">
+        Last wrong card: {{game.lastCardIfWrong.event}} {{game.lastCardIfWrong.year}}
+      </div>
+    {{/if}}
+    <div id="CurrentCardPanel-card">
+      <div class="Timeline-card">
+        <div class="Timeline-card-event">{{currentCard.event}}</div>
+      </div>
+    </div>
   </div>
 
   <div id="Timeline">
