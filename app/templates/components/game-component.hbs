@@ -13,16 +13,18 @@
 
 <div id="Game-board">
 
-  <div id="CurrentCardPanel">
-    Card {{game.playedCards.length}} of {{game.cards.length}}
-    {{#if game.lastCardIfWrong}}
-      <div id="CurrentCardPanel-lastWrongCard">
-        Last wrong card: {{game.lastCardIfWrong.event}} {{game.lastCardIfWrong.year}}
-      </div>
-    {{/if}}
-    <div id="CurrentCardPanel-card">
-      <div class="Timeline-card {{if gameEnded 'game-ended'}}" >
-        <div class="Timeline-card-event">{{currentCard.event}}</div>
+  <div id="CurrentCardSidebar">
+    <div id="CurrentCardPanel">
+      Card {{game.playedCards.length}} of {{game.cards.length}}
+      {{#if game.lastCardIfWrong}}
+        <div id="CurrentCardPanel-lastWrongCard">
+          Last wrong card: {{game.lastCardIfWrong.event}} {{game.lastCardIfWrong.year}}
+        </div>
+      {{/if}}
+      <div id="CurrentCardPanel-card">
+        <div class="Timeline-card {{if gameEnded 'game-ended'}}" >
+          <div class="Timeline-card-event">{{currentCard.event}}</div>
+        </div>
       </div>
     </div>
   </div>

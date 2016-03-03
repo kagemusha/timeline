@@ -49,11 +49,10 @@
 }
 
 #Game-board {
-  margin-top: 11rem;
+  margin-top: 14rem;
   width: 100%;
   display: flex;
-  position: relative;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 
@@ -91,4 +90,12 @@
   width: 4rem;
   display: inline-block;
   cursor: pointer;
+}
+
+#CurrentCardSidebar {
+  width: 14em;
+}
+
+#CurrentCardPanel {
+  position: fixed;
 }
