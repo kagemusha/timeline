@@ -51,6 +51,7 @@ const DATA = [
     ["Newton publishes law of gravitation", 1687],
     ["US Declaration of Independence", 1776],
     ["Storming of the Bastille", 1789],
+    ["Burr kills Hamilton in duel", 1804],
     ["Napoleon crowned Emperor", 1804],
     ["Battle of Austerlitz", 1805],
     ["Nelson defeats French at Trafalgar", 1805],
