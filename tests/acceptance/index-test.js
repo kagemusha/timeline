@@ -22,7 +22,7 @@ test('create game', function(assert) {
   page.clickButton('New Game')
   andThen(function() {
     assert.equal(currentURL(), '/game/null'); //todo fix
-    assert.deepEqual(gamePage.playerNames(), ['Herodotus', 'yuma'])
-    assert.deepEqual(gamePage.cardsRemaining(), ['12', '10'])
+    assert.deepEqual(gamePage.playerNames(), ['Herodotus', 'yuma', 'Gibbons'])
+    assert.deepEqual(gamePage.cardsRemaining(), ['12', '15', '15'])
   });
 });
