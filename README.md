@@ -2,6 +2,8 @@
 
 Online version of the classic game
 
+You are on the *standalone* branch - this branch uses Mirage fixtures and doesn't need a server.
+For the server version, go to the master branch.
 
 # Object Model
 
