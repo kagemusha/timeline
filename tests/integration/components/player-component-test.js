@@ -9,17 +9,10 @@ test('it renders', function(assert) {
   
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });" + EOL + EOL +
+  this.set('player', {name: 'Livy', cardsRemaining: 10});
+  this.render(hbs`{{player-component player=player}}`);
 
-  this.render(hbs`{{player-component}}`);
+  assert.equal(this.$('.Game-playerName').text().trim(), 'Livy');
+  assert.equal(this.$('.Game-cardsRemaining').text().trim(), '10');
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:" + EOL +
-  this.render(hbs`
-    {{#player-component}}
-      template block text
-    {{/player-component}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });
