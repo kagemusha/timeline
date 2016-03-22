@@ -31,6 +31,9 @@ module.exports = function(environment) {
       'script-src': "* 'unsafe-inline'",
       'style-src': " 'self' 'unsafe-inline'"
     };
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    }
   }
 
   if (environment === 'test') {

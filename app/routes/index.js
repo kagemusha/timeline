@@ -4,6 +4,8 @@ const INITIAL_PLAYER_COUNT = 4;
 const INITIAL_CARD_COUNT = 15;
 
 export default Ember.Route.extend({
+  gameCode: null,
+
   setupController(controller, model) {
     this._super(controller, model);
     let players = [];
@@ -14,6 +16,7 @@ export default Ember.Route.extend({
     players[1].set('name', 'Livy');
     players[2].set('name', 'Gibbons');
     controller.set('players', players)
+    controller.set('gameCode', 'game2')
   },
 
   actions: {
@@ -25,6 +28,12 @@ export default Ember.Route.extend({
         game.set('cards', cards);
         this.transitionTo('game', game);
       });
+    },
+    joinGame() {
+      const code = this.controllerFor('index').get('gameCode');
+      this.store.queryRecord('game', {code: code}).then((game) => {
+        this.transitionTo('game', game);
+      })
     }
   }
 });
