@@ -46,6 +46,7 @@
     "ember-resolver": "^2.0.3",
     "ember-tether": "0.2.0",
     "loader.js": "^4.0.0",
-    "mappy-breakpoints": "^0.2.1"
+    "mappy-breakpoints": "^0.2.1",
+    "ember-phoenix-channel": "^0.1.0"
   }
 }
