@@ -25,6 +25,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.APP.SERVER = "http://localhost:4000";
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
     ENV.contentSecurityPolicy = {
       'default-src': "*",
       'connect-src': "*",
@@ -37,6 +41,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
+    ENV.APP.SERVER = "";
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';

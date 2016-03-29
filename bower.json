@@ -10,6 +10,7 @@
     "lodash": "~3.7.0",
     "Faker": "~3.0.0",
     "normalize.css": "3.0.3",
-    "tether": "^1.0.3"
+    "tether": "^1.0.3",
+    "uri.js": "~1.17.0"
   }
 }
