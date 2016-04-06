@@ -1,8 +1,22 @@
 {{!game-component
   game=model
 }}
-<h2>
-  Your game was created with code: {{model.code}}
-</h2>
+<h2> Game code: {{model.code}} </h2>
 
-<button class="startGame" {{action 'startGame'}} >Start Game</button>
+<h3> Players </h3>
+
+
+
+{{#if isWaitingToStart}}
+  {{#each players as |player| }}
+
+  {{/each}}
+  {{#if isCreator}}
+    <button class="startGame" {{action 'startGame'}} >Start Game</button>
+    <button class="startGame" {{action 'abandonGame'}} >Abandon Game</button>
+  {{else}}
+    <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
+  {{/if}}
+{{else}}
+  {{game-board game=game}}
+{{/if}}

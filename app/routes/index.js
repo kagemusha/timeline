@@ -1,9 +1,23 @@
 import Ember from 'ember';
 
+const { inject } = Ember;
 
 export default Ember.Route.extend({
   gameCode: null,
-  channelService: Ember.inject.service(),
+  channelService: inject.service(),
+  gameService: inject.service(),
+
+  beforeModel() {
+    if (this.get('gameService.inAGame')) {
+      this.transitionTo('game')
+    }
+  },
+  joinGame(game) {
+    this.get('gameService').set('game', game);
+    const channelService = this.get('channelService');
+    channelService.joinChannel(`game:${game.get('id')}`);
+    this.transitionTo('game');
+  },
 
   actions: {
 
