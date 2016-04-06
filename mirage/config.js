@@ -1,12 +1,9 @@
 export default function() {
 
-  this.get('/cards', function(db /*, request */){
-    return {
-      data: db.all('card').map(card => (
-        {type: 'cards', id: card.attrs.id, attributes: card.attrs}
-      ))
-    }
+  this.post('api/games', (db, request)=>{
+    return {game: {id: 1 }};
   });
+
   // These comments are here to help you get started. Feel free to delete them.
 
   /*
