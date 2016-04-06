@@ -1,9 +1,11 @@
-<h3>Create Game</h3>
-{{input class="gameCode" value=newGameCode}}
-<button class="NewGame" {{action 'newGame'}} >New Game</button>
 
+<h3>Name</h3>
+{{input class="playerName" value=playerName}}
+
+<h3>Create Game</h3>
+{{input class="newGameCode" value=newGameCode}}
+<button class="NewGame" {{action 'createGame'}} >Create Game</button>
 
 <h3>Join Game</h3>
-
-{{input class="gameCode" value=gameCode}}
+{{input class="existingGameCode" value=joinGameCode}}
 <button class="joinGame" {{action 'joinGame'}} >Join Game</button>
