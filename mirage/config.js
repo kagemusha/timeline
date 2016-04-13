@@ -1,7 +1,11 @@
 export default function() {
 
   this.post('api/games', (db, request)=>{
-    return {game: {id: 1 }};
+    const game = JSON.parse(request.requestBody);
+    game.data.player = [ game.data.creator ];
+
+    console.log(`post`, game);
+    return game;
   });
 
   // These comments are here to help you get started. Feel free to delete them.
