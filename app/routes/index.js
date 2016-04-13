@@ -28,10 +28,11 @@ export default Ember.Route.extend({
 
       const playerName = this.controllerFor('index').get('playerName');
       const player = this.store.createRecord('player', {name: playerName});
-      game.set("creator", player);
+      game.get("players").addObject(player);
 
       game.save().then((game) => {
         this.joinGame(game);
+        player.unloadRecord();
       }).catch((error)=>{
         console.log(`error creating game`, error);
       });
