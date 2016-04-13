@@ -1,1 +1,7 @@
-{{yield}}
+<ul class="PlayerList">
+  {{#each game.players as |player| }}
+    <li>
+      {{player.name}} {{if player.isGameCreator "(creator)"}}
+     </li>
+  {{/each}}
+</ul>
