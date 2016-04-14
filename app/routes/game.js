@@ -16,6 +16,12 @@ export default Ember.Route.extend({
     }
   },
 
+  setupController(controller, model) {
+    this._super(controller, model);
+    controller.set('game', model);
+    controller.set('player', this.get('gameService.player'));
+  },
+
   actions: {
     startGame() {
       const gameId = this.controllerFor('game').get('model.id');

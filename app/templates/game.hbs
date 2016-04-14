@@ -6,17 +6,20 @@
 <h3> Players </h3>
 
 
-
-{{#if isWaitingToStart}}
-  {{#each players as |player| }}
-
-  {{/each}}
-  {{#if isCreator}}
+{{#if game.isWaitingToStart}}
+  <ul class="Gme-players">
+    {{#each game.players as |player| }}
+      <li class="Game-player">
+        {{player.name}}
+      </li>
+    {{/each}}
+  </ul>
+  {{#if player.isCreator}}
     <button class="startGame" {{action 'startGame'}} >Start Game</button>
     <button class="startGame" {{action 'abandonGame'}} >Abandon Game</button>
   {{else}}
     <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
   {{/if}}
 {{else}}
-  {{game-board game=model}}
+  {{game-board game=game}}
 {{/if}}

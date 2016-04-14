@@ -3,7 +3,8 @@ import PageObject from '../page-object';
 const {
   text,
   clickOnText,
-  textList
+  textList,
+  count
 } = PageObject;
 
 export default PageObject.create({
@@ -13,6 +14,9 @@ export default PageObject.create({
   placeCard(position) {
     click(`.Timeline-placeCardButton:eq(${position+1})`)
   },
-  playerNames: textList('.Game-playerName'),
+  boardShowing() {
+    return count('.GameBoard') ===  1;
+  },
+  playerNames: textList('.Game-player'),
   cardsRemaining: textList('.Game-cardsRemaining')
 });

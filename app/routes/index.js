@@ -12,8 +12,9 @@ export default Ember.Route.extend({
       this.transitionTo('game')
     }
   },
-  joinGame(game) {
+  joinGame(game, player) {
     this.get('gameService').set('game', game);
+    this.get('gameService').set('player', player);
     const channelService = this.get('channelService');
     channelService.connect();
     channelService.joinChannel(`game:${game.get('id')}`);
@@ -31,8 +32,11 @@ export default Ember.Route.extend({
       game.get("players").addObject(player);
 
       game.save().then((game) => {
-        this.joinGame(game);
+        //ember data is putting returned player as a new player
+        //get rid of initial player and set player to returned player
         player.unloadRecord();
+        const newPlayer = this.store.peekAll('player').findBy('name', playerName);
+        this.joinGame(game, newPlayer);
       }).catch((error)=>{
         console.log(`error creating game`, error);
       });
@@ -45,7 +49,7 @@ export default Ember.Route.extend({
       const player = this.store.createRecord('player', attrs);
 
       player.save().then((player) => {
-        this.joinGame(player.get('game'))
+        this.joinGame(player.get('game'), player)
       });
     }
   }
