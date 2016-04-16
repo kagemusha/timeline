@@ -3,6 +3,9 @@ import ApplicationSerializer from './application';
 
 export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
-    players: { embedded: 'always' }
+    game: {
+      serialize: 'ids',
+      deserialize: 'records'
+    }
   }
 });
