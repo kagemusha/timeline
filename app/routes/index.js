@@ -17,7 +17,7 @@ export default Ember.Route.extend({
     this.get('gameService').set('player', player);
     const channelService = this.get('channelService');
     channelService.connect();
-    channelService.joinChannel(`game:${game.get('id')}`);
+    channelService.joinChannel(`game:${game.get('id')}`, "game");
     this.transitionTo('game');
   },
 

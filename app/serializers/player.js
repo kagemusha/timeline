@@ -5,7 +5,7 @@ export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
     game: {
       serialize: 'ids',
-      deserialize: 'records'
+      deserialize: 'ids'
     }
   }
 });
