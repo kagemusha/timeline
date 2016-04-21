@@ -24,14 +24,7 @@ export default Ember.Route.extend({
 
   actions: {
     startGame() {
-      const gameId = this.controllerFor('game').get('model.id');
-      const gameChannelName = `game:${gameId}`;
-      const channelService = this.get('channelService');
-      const gameChannel = channelService.getChannel(gameChannelName);
-      channelService.setChannelCallback(gameChannelName, "game-started", ((msg) => {
-        console.log(`game started msg received: ${msg}`);
-      }));
-      gameChannel.push("start-game").receive("error", e=> console.log(e));
+      this.get('gameService').startGame();
     }
   }
 });

@@ -13,11 +13,7 @@ export default Ember.Route.extend({
     }
   },
   joinGame(game, player) {
-    this.get('gameService').set('game', game);
-    this.get('gameService').set('player', player);
-    const channelService = this.get('channelService');
-    channelService.connect();
-    channelService.joinChannel(`game:${game.get('id')}`, "game");
+    this.get('gameService').joinGame(game, player);
     this.transitionTo('game');
   },
 

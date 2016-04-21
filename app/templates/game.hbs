@@ -16,7 +16,7 @@
   </ul>
   {{#if player.isCreator}}
     <button class="startGame" {{action 'startGame'}} >Start Game</button>
-    <button class="startGame" {{action 'abandonGame'}} >Abandon Game</button>
+    <button class="abandonGame" {{action 'abandonGame'}} >Abandon Game</button>
   {{else}}
     <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
   {{/if}}
