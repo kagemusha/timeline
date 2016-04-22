@@ -5,3 +5,12 @@
      </li>
   {{/each}}
 </ul>
+
+<ul class="CardList">
+  {{#each game.cards as |card| }}
+    <li>
+      <div>{{card.event}} </div>
+      <div>{{card.year}} </div>
+    </li>
+  {{/each}}
+</ul>
