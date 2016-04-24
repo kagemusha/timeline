@@ -8,5 +8,6 @@ export default DS.Model.extend({
   //turns: hasMany('turn'),
   name: attr(),
   code: attr(),
-  isWaitingToStart: true
+  isWaitingToStart: true,
+  currentCard: null,
 });

@@ -24,5 +24,10 @@ export default Ember.Service.extend({
 
   startGame() {
     const gameId = this.get('game.id')
-    this.get('channel').push("start-game", {game_id: gameId}).receive("error", e=> console.log(e)); }
+    this.get('channel').push("start-game", {game_id: gameId}).receive("error", e=> console.log(e));
+  },
+
+  placeCurrentCard(position) {
+
+  }
 });

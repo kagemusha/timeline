@@ -1,16 +1,37 @@
-<ul class="PlayerList">
-  {{#each game.players as |player| }}
-    <li>
-      {{player.name}} {{if player.isGameCreator "(creator)"}}
-     </li>
-  {{/each}}
-</ul>
+<div class="GameBoard-players">
+  <ul class="PlayerList">
+    {{#each game.players as |player| }}
+      <li class="GameBoard-player">
+        <div class="GameBoard-playerName">{{player.name}}</div>
+        <div class="GameBoard-playerCardsRemaining">{{player.cardsRemaining}}</div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
 
-<ul class="CardList">
-  {{#each game.cards as |card| }}
-    <li>
-      <div>{{card.event}} </div>
-      <div>{{card.year}} </div>
-    </li>
-  {{/each}}
-</ul>
+<div class="GameBoard-currentCardContainer">
+  <div class="GameBoard-currentCard">
+    <div>{{game.currentCard.event}} </div>
+    <br/>
+    <div>?</div>
+  </div>
+</div>
+
+<div class="GameBoard-cards">
+  <div class="listLine">&nbsp;</div>
+  <ul class="GameBoard-cardList">
+    {{#unless gameEnded}}
+      <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
+    {{/unless}}
+    {{#each sortedCards as |card i| }}
+      <li class="GameBoard-card">
+        <div>{{card.event}} </div>
+        <br/>
+        <div>{{card.year}} </div>
+      </li>
+      {{#unless gameEnded}}
+        <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
+      {{/unless}}
+    {{/each}}
+  </ul>
+</div>
