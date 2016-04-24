@@ -13,7 +13,6 @@ test('create a new game', function(assert) {
   indexPage.clickCreateGame();
   andThen(() => {
     assert.equal(currentURL(), '/game', "Transitioned to game");
-    return pauseTest();
     assert.notOk(gamePage.boardShowing(), ['Herodotus'], "Shows players");
     assert.equal(gamePage.playerNames(), ['Herodotus'], "Shows players");
   });
@@ -23,9 +22,9 @@ test('create a new game', function(assert) {
 test('join a game', function(assert) {
   assert.expect(1);
   visit('/');
-  page.playerNameInput('Livy');
-  page.existingGameCodeInput('code');
-  page.clickJoinGame();
+  indexPage.playerNameInput('Livy');
+  indexPage.existingGameCodeInput('code');
+  indexPage.clickJoinGame();
   andThen(() => {
     assert.equal(currentURL(), '/game', "Transitioned to game");
     assert.equal(gamePage.playerNames(), ['Herodotus', 'Livy'], "Shows players");
