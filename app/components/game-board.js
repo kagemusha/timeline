@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 
   actions: {
     placeCard(position) {
-      this.get('gameService').placeCard(this.get('game'), this.get('sortedCards') , position);
+      this.get('gameService').placeCard(position);
     }
   }
 });
