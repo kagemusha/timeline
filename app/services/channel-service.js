@@ -8,44 +8,49 @@ export default ChannelService.extend({
   gameService: inject.service(),
   game: computed.readOnly("gameService.game"),
 
+  pushAndReturnObject(payload, type, id) {
+    id = id || payload[type]['id'];
+    const store = this.get('store');
+    store.pushPayload(payload);
+    return store.peekRecord(type, id);
+  },
+
   channelTopicHandlers: {
+
     game: {
       "added-player": function(players) {
         console.log(`added-player players`, players);
         this.get('store').pushPayload(players);
       },
+
       "game-started": function(gameJson){
         const game = this.get('game');
         console.log(`game-started message`, game);
         this.set('gameService.game.isWaitingToStart', false);
-        const store = this.get('store');
-        store.pushPayload(gameJson.current_card);
-        const currentCard = store.peekRecord('card', gameJson.current_card.card.id);
-        game.currentCard = currentCard;
+        const currentCard = this.pushAndReturnObject(gameJson.current_card, 'card');
+        game.set('currentCard', currentCard);
 
         const lastCardJson = gameJson.last_card;
         if (lastCardJson) {
-          store.pushPayload(lastCardJson);
-          const lastCard = store.peekRecord('card', lastCardJson.card.id);
+          const lastCard = this.pushAndReturnObject(lastCardJson, 'card');
           game.get('cards').addObject(lastCard);
         }
       },
+
       "turn-result": function(turnJson){
         console.log(`turnJson`, turnJson);
-        const store = this.get('store');
         const game = this.get('game');
         if (turnJson.correct) {
           const lastCardJson = turnJson.last_card;
-          store.pushPayload(lastCardJson);
-          const lastCard = store.peekRecord('card', lastCardJson.card.id);
+          const lastCard = this.pushAndReturnObject(lastCardJson, 'card');
           game.get('cards').addObject(lastCard);
         } else {
           alert("Sorry!");
         }
-        store.pushPayload(turnJson.current_card);
-        const currentCard = store.peekRecord('card', turnJson.current_card.card.id);
+        const currentCard = this.pushAndReturnObject(turnJson.current_card, 'card');
         game.set('currentCard', currentCard);
       }
     },
+
   }
 });
