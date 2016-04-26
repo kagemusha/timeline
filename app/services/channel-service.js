@@ -39,6 +39,8 @@ export default ChannelService.extend({
           store.pushPayload(lastCardJson);
           const lastCard = store.peekRecord('card', lastCardJson.card.id);
           game.get('cards').addObject(lastCard);
+        } else {
+          alert("Sorry!");
         }
         store.pushPayload(turnJson.current_card);
         const currentCard = store.peekRecord('card', turnJson.current_card.card.id);
