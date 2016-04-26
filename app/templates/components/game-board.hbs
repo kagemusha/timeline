@@ -11,9 +11,7 @@
 
 <div class="GameBoard-currentCardContainer">
   <div class="GameBoard-currentCard">
-    <div>{{game.currentCard.event}} </div>
-    <br/>
-    <div>?</div>
+    <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
   </div>
 </div>
 
@@ -25,7 +23,7 @@
     {{/unless}}
     {{#each sortedCards as |card i| }}
       <li class="GameBoard-card">
-        <div>{{card.event}} </div>
+        <div class="GameBoard-card-event">{{card.event}} </div>
         <br/>
         <div>{{card.year}} </div>
       </li>

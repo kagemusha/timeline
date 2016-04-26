@@ -116,15 +116,26 @@
   }
   z-index: 2;
 }
+.GameBoard-card-event {
+  padding: 0 8px;
+  text-align: center;
+}
+
 .GameBoard-currentCard {
   @include card;
   font-weight: bold;
+  font-size: 1.1rem;
   width: 17rem;
   height: 8.5rem;
   background: yellow;
   &.game-ended {
     background: lightgray;
   }
+}
+
+.GameBoard-currenctCard-event {
+  padding: 0 10px;
+  text-align: center;
 }
 
 $placeCardButtonColor: black;
