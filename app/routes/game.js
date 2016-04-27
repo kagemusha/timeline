@@ -25,6 +25,10 @@ export default Ember.Route.extend({
   actions: {
     startGame() {
       this.get('gameService').startGame();
+    },
+    abandonGame() {
+      this.get('gameService').clear();
+      this.transitionTo('index');
     }
   }
 });

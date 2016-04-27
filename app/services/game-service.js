@@ -4,6 +4,7 @@ const { computed, inject } = Ember;
 
 export default Ember.Service.extend({
   channelService: inject.service(),
+  store: inject.service(),
 
   inAGame: computed.notEmpty('game'),
   game: null,
@@ -30,5 +31,13 @@ export default Ember.Service.extend({
 
   placeCard(position) {
     this.get('channel').push("place-card", {position: position}).receive("error", e=> console.log(e));
+  },
+
+  clear() {
+    this.set('game', null);
+    this.set('player', null);
+    this.get('store').unloadAll();
+    localStorage.clear();
+    //todo: send msg to server to cleanup game and close channel
   }
 });
