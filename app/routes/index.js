@@ -10,6 +10,15 @@ export default Ember.Route.extend({
   beforeModel() {
     if (this.get('gameService.inAGame')) {
       this.transitionTo('game')
+    } else {
+      const token = localStorage.getItem('timeline-token');
+      if (token && token !== "undefined" && token !== "null") {
+        this.store.queryRecord('player', {token: token}).then ((player) => {
+          this.joinGame(player.get('game'), player)
+        }).catch((error)=> {
+          console.log(`Error returning to game`, error);
+        });
+      }
     }
   },
   joinGame(game, player) {
