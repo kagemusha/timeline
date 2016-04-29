@@ -1,13 +1,10 @@
-{{!game-component
-  game=model
-}}
-<h2> Game code: {{model.code}} </h2>
+<h2> Game: {{model.code}}</h2>
+<h3>Player: {{player.name}}</h3>
 
-<h3> Players </h3>
 
 
 {{#if game.isWaitingToStart}}
-  <ul class="Gme-players">
+  <ul class="Game-players">
     {{#each game.players as |player| }}
       <li class="Game-player">
         {{player.name}}
@@ -22,4 +19,6 @@
   {{/if}}
 {{else}}
   {{game-board game=game}}
+  {{socket-message-log channelService=channelService}}
 {{/if}}
+

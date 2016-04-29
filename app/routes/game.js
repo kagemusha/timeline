@@ -18,6 +18,7 @@ export default Ember.Route.extend({
 
   setupController(controller, model) {
     this._super(controller, model);
+    controller.set('channelService', this.get('channelService'));
     controller.set('game', model);
     controller.set('player', this.get('gameService.player'));
   },
