@@ -10,4 +10,5 @@ export default DS.Model.extend({
   code: attr(),
   isWaitingToStart: true,
   currentCard: null,
+  currentPlayer: null,
 });

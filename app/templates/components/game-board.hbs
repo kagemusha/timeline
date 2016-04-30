@@ -1,7 +1,7 @@
 <div class="GameBoard-players">
   <ul class="PlayerList">
     {{#each game.players as |player| }}
-      <li class="GameBoard-player">
+      <li class="GameBoard-player {{if player.isCurrentPlayer "GameBoard-currentPlayer"}}">
         <div class="GameBoard-playerName">{{player.name}}</div>
         <div class="GameBoard-playerCardsRemaining">{{player.cardsRemaining}}</div>
       </li>
@@ -19,7 +19,9 @@
   <div class="listLine">&nbsp;</div>
   <ul class="GameBoard-cardList">
     {{#unless gameEnded}}
-      <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
+      {{#if isMyTurn}}
+        <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
+      {{/if}}
     {{/unless}}
     {{#each sortedCards as |card i| }}
       <li class="GameBoard-card">
@@ -27,9 +29,9 @@
         <br/>
         <div>{{card.year}} </div>
       </li>
-      {{#unless gameEnded}}
+      {{#if isMyTurn}}
         <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
-      {{/unless}}
+      {{/if}}
     {{/each}}
   </ul>
 </div>

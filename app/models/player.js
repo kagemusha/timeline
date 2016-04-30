@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 const { attr } = DS;
@@ -13,5 +14,9 @@ export default DS.Model.extend({
   totalCards: attr(),
   isCreator: attr(),
   isWinner: attr(),
-  token: attr()
+  token: attr(),
+
+  isCurrentPlayer: Ember.computed('game.currentPlayer', function(){
+    return this.get('game.currentPlayer') === this;
+  })
 });
