@@ -40,8 +40,10 @@ export default Ember.Route.extend({
         //ember data is putting returned player as a new player
         //get rid of initial player and set player to returned player
         player.unloadRecord();
-        const newPlayer = this.store.peekAll('player').findBy('name', playerName);
-        this.joinGame(game, newPlayer);
+        Ember.run.debounce(this, ()=>{
+          const newPlayer = this.store.peekAll('player').findBy('name', playerName);
+          this.joinGame(game, newPlayer);
+        }, 10);
       }).catch((error)=>{
         console.log(`error creating game`, error);
       });
