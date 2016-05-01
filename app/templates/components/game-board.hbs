@@ -1,37 +1,42 @@
-<div class="GameBoard-players">
-  <ul class="PlayerList">
-    {{#each game.players as |player| }}
-      <li class="GameBoard-player {{if player.isCurrentPlayer "GameBoard-currentPlayer"}}">
-        <div class="GameBoard-playerName">{{player.name}}</div>
-        <div class="GameBoard-playerCardsRemaining">{{player.cardsRemaining}}</div>
-      </li>
-    {{/each}}
-  </ul>
+<div class="GameBoard-header">
+  <h2>{{game.code}}</h2>
 </div>
 
-<div class="GameBoard-currentCardContainer">
-  <div class="GameBoard-currentCard">
-    <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
+<div class="GameBoard-content">
+
+  <div class="GameBoard-players">
+    <ul class="PlayerList">
+      {{#each game.players as |player| }}
+        {{player-item player=player thisPlayer=gameService.player}}
+      {{/each}}
+    </ul>
   </div>
-</div>
 
-<div class="GameBoard-cards">
-  <div class="listLine">&nbsp;</div>
-  <ul class="GameBoard-cardList">
-    {{#unless gameEnded}}
-      {{#if isMyTurn}}
-        <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
-      {{/if}}
-    {{/unless}}
-    {{#each sortedCards as |card i| }}
-      <li class="GameBoard-card">
-        <div class="GameBoard-card-event">{{card.event}} </div>
-        <br/>
-        <div>{{card.year}} </div>
-      </li>
-      {{#if isMyTurn}}
-        <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
-      {{/if}}
-    {{/each}}
-  </ul>
+  <div class="GameBoard-currentCardContainer">
+    <div class="GameBoard-currentCard">
+      <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
+    </div>
+  </div>
+
+  <div class="GameBoard-cards">
+    <div class="listLine">&nbsp;</div>
+    <ul class="GameBoard-cardList">
+      {{#unless gameEnded}}
+        {{#if isMyTurn}}
+          <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
+        {{/if}}
+      {{/unless}}
+      {{#each sortedCards as |card i| }}
+        <li class="GameBoard-card">
+          <div class="GameBoard-card-event">{{card.event}} </div>
+          <br/>
+          <div>{{card.year}} </div>
+        </li>
+        {{#if isMyTurn}}
+          <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+
 </div>

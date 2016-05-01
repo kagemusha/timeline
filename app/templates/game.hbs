@@ -1,9 +1,6 @@
-<h2> Game: {{model.code}}</h2>
-<h3>Player: {{player.name}}</h3>
-
-
-
 {{#if game.isWaitingToStart}}
+  <h2> Game: {{model.code}}</h2>
+  <h3>Player: {{player.name}}</h3>
   <ul class="Game-players">
     {{#each game.players as |player| }}
       <li class="Game-player">
@@ -18,7 +15,7 @@
     <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
   {{/if}}
 {{else}}
-  {{game-board game=game}}
+  {{game-board game=game player=player}}
   {{socket-message-log channelService=channelService}}
 {{/if}}
 
