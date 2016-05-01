@@ -39,6 +39,7 @@ export default ChannelService.extend({
     const game = this.get('game');
     const currentCard = this.pushAndReturnObject(payload.current_card, 'card');
     game.set('currentCard', currentCard);
+    const lastPlayer = this.get('game.currentPlayer');
     const currentPlayer = this.get('store').peekRecord('player', payload.current_player);
     game.set('currentPlayer', currentPlayer);
 
@@ -50,6 +51,8 @@ export default ChannelService.extend({
       // first turn is just setup so no feedback
       if (payload.turn_count > 1) {
         alert('Yes!!');
+        //may want to do this on server
+        lastPlayer.decrementProperty('cardsRemaining');
       }
     } else {
       alert('Sorry!')
