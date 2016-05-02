@@ -9,6 +9,8 @@ export default DS.Model.extend({
   name: attr(),
   code: attr(),
   isWaitingToStart: true,
+  gameEnded: false,
+  winner: null,
   currentCard: null,
   currentPlayer: null,
 });

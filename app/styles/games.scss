@@ -52,6 +52,13 @@
   padding: 0 20px;
 }
 
+.GameBoard-winner {
+  background: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px;
+}
+
 .GameBoard-content {
   width: 100%;
   display: flex;
