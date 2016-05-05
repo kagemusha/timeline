@@ -16,8 +16,14 @@ export default Ember.Service.extend({
       game,
       player
     });
-    const gameId = this.get('game.id');
     localStorage.setItem('timeline-token', player.get('token'));
+    this.joinGameChannel(game.id);
+  },
+
+  joinGameChannel(gameId) {
+    if (!gameId) {
+      return;
+    }
     const channelService = this.get('channelService');
     channelService.connect();
     const channel = channelService.joinChannel(`game:${gameId}`, "game");

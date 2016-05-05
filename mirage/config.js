@@ -1,11 +1,21 @@
+import Mirage from 'ember-cli-mirage';
+
 export default function() {
-
   this.post('api/games', (db, request)=> {
-    const game = JSON.parse(request.requestBody);
-    debugger
-    game.data.players[0]["is-creator"] = true;
+    const gameRequest = JSON.parse(request.requestBody).game;
+    const gameCode = gameRequest.code;
+    const playerName = gameRequest.players[0].name;
 
-    return game;
+    const gameResponse = {"game": {
+                    "id":1,
+                    "code": gameCode,
+                    "players":[
+                      {"total_cards":2,
+                       "token":"token",
+                        "name": playerName,"is_creator":true,"id":12,"cards_remaining":2}],
+                      }
+                  };
+    return new Mirage.Response(201, {}, gameResponse);
   });
 
   this.post('api/player', (db, request)=> {
