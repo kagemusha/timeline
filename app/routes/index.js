@@ -32,7 +32,7 @@ export default Ember.Route.extend({
       const code = this.controllerFor('index').get('newGameCode');
       const game = this.store.createRecord('game', {code: code});
 
-      const playerName = this.controllerFor('index').get('playerName');
+      const playerName = this.controllerFor('index').get('createGamePlayer');
       const player = this.store.createRecord('player', {name: playerName});
       game.get("players").addObject(player);
 
@@ -51,7 +51,7 @@ export default Ember.Route.extend({
 
     joinGame() {
       const gameCode = this.controllerFor('index').get('joinGameCode');
-      const playerName = this.controllerFor('index').get('playerName');
+      const playerName = this.controllerFor('index').get('joinGamePlayer');
       const attrs = {name: playerName, gameCode: gameCode}
       const player = this.store.createRecord('player', attrs);
 

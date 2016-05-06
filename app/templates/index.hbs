@@ -1,11 +1,36 @@
+<div class="GameForms">
+  <div class="CreateGameForm GameForm">
+    {{input class="PlayerName" placeholder="Player name" value=createGamePlayer}}
+    {{input class="NewGameCode" placeholder="Game code" value=newGameCode}}
+    <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
+  </div>
 
-<h3>Name</h3>
-{{input class="PlayerName" value=playerName}}
+  <div class="JoinGameForm GameForm">
+    {{input class="PlayerName" placeholder="Player name" value=joinGamePlayer}}
+    {{input class="NewGameCode" placeholder="Game code" value=joinGameCode}}
+    <button class="JoinGameButton" {{action 'joinGame'}} >Join Game</button>
+  </div>
+</div>
 
-<h3>Create Game</h3>
-{{input class="NewGameCode" value=newGameCode}}
-<button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
+<div class="ImageTimeline">
+  <div class="ImageTimeline-top">&nbsp;</div>
+  <div class="ImageTimeline-line">&nbsp;</div>
+  <div class="ImageTimeline-bottom">&nbsp;</div>
+  <div class="EventImage-container">
+    <img class="EventImage" src="http://www.china-mike.com/wp-content/uploads/2011/03/terracotta-army-warriors-xian.png" />
+  </div>
+  <div class="EventImage-container">
+    <img class="EventImage" src="http://media.washtimes.com.s3.amazonaws.com/media/image/2015/03/18/caesar_2.jpg" />
+  </div>
+  <div class="EventImage-container">
+    <img class="EventImage" src="http://images.fineartamerica.com/images-medium-large/8-christopher-columbus-granger.jpg" />
+  </div>
+  <div class="EventImage-container">
+    <img class="EventImage" src="http://www.nasa.gov/images/content/2333main_MM_Image_Feature_19_rs4.jpg" />
+  </div>
+</div>
 
-<h3>Join Game</h3>
-{{input class="ExistingGameCode" value=joinGameCode}}
-<button class="JoinGameButton" {{action 'joinGame'}} >Join Game</button>
+
+<!--<div class="EventImage-container">-->
+  <!--<img class="EventImage" src="http://teachers.ausd.net/antilla/liberty.jpg" />-->
+<!--</div>-->
