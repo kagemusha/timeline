@@ -19,13 +19,21 @@ module.exports = function(environment) {
     }
   };
 
+  if (environment === 'production') {
+    ENV.APP.host = "phoenix-timeline.herokuapp.com";
+    ENV.APP.httpEndpoint = `https://${ENV.APP.host}`;
+    ENV.APP.socketEndpoint = `wss://${ENV.APP.host}/socket`;
+  }
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.APP.SERVER = "http://localhost:4000";
+    ENV.APP.host = "localhost:4000";
+    ENV.APP.httpEndpoint = `http://${ENV.APP.host}`;
+    ENV.APP.socketEndpoint = `ws://${ENV.APP.host}/socket`;
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
@@ -41,7 +49,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'test') {
-    ENV.APP.SERVER = "";
+    ENV.APP.httpProtocol = "";
+    ENV.APP.socketProtocol = "";
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';

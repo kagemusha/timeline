@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ChannelService from 'ember-phoenix-channel/services/channel-service';
+import config from '../config/environment';
 
 const { computed, inject } = Ember;
 
@@ -7,6 +8,7 @@ export default ChannelService.extend({
   store: inject.service(),
   gameService: inject.service(),
   game: computed.readOnly("gameService.game"),
+  host: config.APP.socketEndpoint,
 
   channelTopicHandlers: {
 
