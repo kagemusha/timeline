@@ -54,17 +54,17 @@ ul {
     margin-top: 10px;
     margin-bottom: 25px;
   }
+}
 
-  button {
-    color: white;
-    background: black;
-    font-size: 22px;
-    font-weight: bold;
-    border-radius: 8px;
-    border: 2px black solid;
-    cursor: pointer;
-    padding: 6px;
-  }
+button {
+  color: white;
+  background: black;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 2px black solid;
+  cursor: pointer;
+  padding: 6px;
 }
 
 .JoinGameForm {
@@ -98,10 +98,10 @@ ul {
   position: absolute;
   z-index: 2;
   background: black;
-  left: 51px;
+  left: 56px;
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
 }
 
 .ImageTimeline-top {
@@ -125,4 +125,20 @@ ul {
   height: 120px;
   border: 4px white solid;
   margin: 20px 0;
+}
+
+.WaitingToStart {
+  padding: 40px 0;
+}
+
+.Game-players {
+  font-size: 24px;
+  margin: 20px 0 40px 0;
+}
+
+.GameStatus {
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: 40px;
 }

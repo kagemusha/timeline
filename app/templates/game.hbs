@@ -1,19 +1,31 @@
 {{#if game.isWaitingToStart}}
-  <h2> Game: {{model.code}}</h2>
-  <h3>Player: {{player.name}}</h3>
-  <ul class="Game-players">
-    {{#each game.players as |player| }}
-      <li class="Game-player">
-        {{player.name}}
-      </li>
-    {{/each}}
-  </ul>
-  {{#if player.isCreator}}
-    <button class="startGame" {{action 'startGame'}} >Start Game</button>
-    <button class="abandonGame" {{action 'abandonGame'}} >Abandon Game</button>
-  {{else}}
-    <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
-  {{/if}}
+  <div class="WaitingToStart">
+    <h1> {{model.code}}</h1>
+
+    <div class="Game-players">
+      <h3>Who's here</h3>
+      <ul>
+        {{#each game.players as |player| }}
+          <li class="Game-player">
+            {{player.name}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="GameStatus">
+      Waiting to start...
+    </div>
+
+    {{#if player.isCreator}}
+      <button class="startGame" {{action 'startGame'}} >Start Game</button>
+      <button class="abandonGame" {{action 'abandonGame'}} >Abandon Game</button>
+    {{else}}
+      <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
+    {{/if}}
+  </div>
+
+  {{image-timeline imagesSrc=imagesSrc}}
 {{else}}
   {{game-board game=game player=player}}
   {{socket-message-log channelService=channelService}}
