@@ -11,7 +11,6 @@ export default DS.Model.extend({
 
   name: attr(),
   cardsRemaining: attr(),
-  totalCards: attr(),
   isCreator: attr(),
   isWinner: attr(),
   token: attr(),

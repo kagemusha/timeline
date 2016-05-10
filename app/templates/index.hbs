@@ -1,6 +1,7 @@
 <div class="GameForms">
   <div class="CreateGameForm GameForm">
     {{input class="PlayerName" placeholder="Player name" value=createGamePlayer}}
+    {{input class="CardCount" placeholder="Card count" value=initialCardCount}}
     {{input class="NewGameCode" placeholder="Game code" value=newGameCode}}
     <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
   </div>

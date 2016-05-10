@@ -8,6 +8,7 @@ export default DS.Model.extend({
   //turns: hasMany('turn'),
   name: attr(),
   code: attr(),
+  initialCardCount: attr(),
   isWaitingToStart: true,
   gameEnded: false,
   winner: null,

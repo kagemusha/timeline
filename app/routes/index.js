@@ -41,7 +41,8 @@ export default Ember.Route.extend({
 
     createGame() {
       const code = this.controllerFor('index').get('newGameCode');
-      const game = this.store.createRecord('game', {code: code});
+      const cardCount = this.controllerFor('index').get('initialCardCount');
+      const game = this.store.createRecord('game', {code: code, initialCardCount: cardCount});
 
       const playerName = this.controllerFor('index').get('createGamePlayer');
       const player = this.store.createRecord('player', {name: playerName});
