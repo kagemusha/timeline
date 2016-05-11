@@ -1,20 +1,21 @@
-<div class="GameBoard-header">
-  <h2>{{game.code}}</h2>
-  {{#if game.winner}}
-    <div class="GameBoard-winner">{{game.winner.name}} won!!</div>
-  {{/if}}
-</div>
 
 <div class="GameBoard-content">
 
-  <div class="GameBoard-players">
-    <ul class="PlayerList">
-      {{#each game.players as |player| }}
-        {{player-item player=player thisPlayer=gameService.player}}
-      {{/each}}
-    </ul>
+  <div class="GameBoard-header">
+    <h2>{{game.code}}</h2>
+    <div class="GameBoard-players">
+      <ul class="PlayerList">
+        {{#each game.players as |player| }}
+          {{player-item player=player thisPlayer=gameService.player}}
+        {{/each}}
+      </ul>
+    </div>
   </div>
 
+
+  <div class="GameBoard-status">
+    Status
+  </div>
   <div class="GameBoard-currentCardContainer">
     <div class="GameBoard-currentCard">
       <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
