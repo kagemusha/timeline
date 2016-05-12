@@ -3,16 +3,16 @@
   <div class="GameForms">
     <div class="GameForms-first">
       <div class="CreateGameForm GameForm">
-        {{input class="PlayerName" placeholder="Player name" value=createGamePlayer}}
-        {{input class="NewGameCode" placeholder="Game code" value=newGameCode}}
+        {{input class="CreatePlayerName" placeholder="Player name" value=createGamePlayer}}
+        {{input class="CreateGameCode" placeholder="Game code" value=newGameCode}}
         {{input class="CardCount" placeholder="Card count" value=initialCardCount}}
         <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
       </div>
       <h1>Timeline</h1>
     </div>
     <div class="JoinGameForm GameForm">
-      {{input class="PlayerName" placeholder="Player name" value=joinGamePlayer}}
-      {{input class="NewGameCode" placeholder="Game code" value=joinGameCode}}
+      {{input class="JoinPlayerName" placeholder="Player name" value=joinGamePlayer}}
+      {{input class="JoinGameCode" placeholder="Game code" value=joinGameCode}}
       <button class="JoinGameButton" {{action 'joinGame'}} >Join Game</button>
     </div>
   </div>

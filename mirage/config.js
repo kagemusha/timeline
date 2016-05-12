@@ -18,12 +18,19 @@ export default function() {
     return new Mirage.Response(201, {}, gameResponse);
   });
 
-  this.post('api/player', (db, request)=> {
-    const game = JSON.parse(request.requestBody);
-    game.data.player = [game.data.creator];
-
-    console.log(`post`, game);
-    return game;
+  this.post('api/players', (db, request)=> {
+    const player = JSON.parse(request.requestBody).player;
+    const response = {"player": {
+                        "token":"token",
+                        "name": player.name,
+                        "is_creator": false,
+                        "id":1,
+                        "game":1,
+                        "cards_remaining": 5},
+                        "game":[{"id": 1, "name":null, "code": player.game_code}]
+                      }
+    console.log(`post`, player);
+    return new Mirage.Response(201, {}, response);
   });
 }
 

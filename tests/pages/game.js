@@ -2,12 +2,11 @@ import PageObject from '../page-object';
 
 const {
   text,
-  clickOnText,
   count
 } = PageObject;
 
 export default PageObject.create({
-  clickButton: clickOnText(''),
+  scope: '.content',
   currentCardText: text('#CurrentCardPanel-card'),
   timelineItems: text('.Timeline-card', {multiple: true}),
   placeCard(position) {

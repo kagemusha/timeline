@@ -1,3 +1,5 @@
+/* global localStorage */
+import Ember from 'ember';
 import { test } from 'qunit';
 import moduleForAcceptance from 'timeline/tests/helpers/module-for-acceptance';
 import indexPage from '../pages/index';
@@ -12,27 +14,32 @@ moduleForAcceptance('Acceptance | index', {
 });
 
 test('create a new game', function(assert) {
-  assert.expect(3);
+  assert.expect(5);
   visit('/');
-  indexPage.playerNameInput('Herodotus');
-  indexPage.newGameCodeInput('code');
-  indexPage.clickCreateGame();
+  indexPage.createPlayerNameInput('Herodotus');
+  indexPage.createGameCodeInput('code');
+  indexPage.cardCountInput('8');
+  indexPage.clickOn('Create Game');
   andThen(() => {
     assert.equal(currentURL(), '/game', "Transitioned to game");
     assert.notOk(gamePage.boardShowing(), "Game board hidden before start");
     assert.deepEqual(gamePage.playerNames, ["Herodotus"], "Game creator shown");
+    assert.ok(gamePage.contains('Start Game'));
+    assert.ok(gamePage.contains('Abandon Game'));
   });
 });
 
 
 test('join a game', function(assert) {
-  assert.expect(1);
+  assert.expect(3);
   visit('/');
-  indexPage.playerNameInput('Livy');
-  indexPage.existingGameCodeInput('code');
-  indexPage.clickJoinGame();
+  indexPage.joinPlayerNameInput('Livy');
+  indexPage.joinGameCodeInput('code');
+  indexPage.clickOn('Join Game');
   andThen(() => {
     assert.equal(currentURL(), '/game', "Transitioned to game");
-    assert.equal(gamePage.playerNames(), ['Herodotus', 'Livy'], "Shows players");
+    assert.deepEqual(gamePage.playerNames, ['Livy'], "Shows players");
+    // todo: mock channel so have at least game creator
+    assert.ok(gamePage.contains('Leave Game'));
   });
 });

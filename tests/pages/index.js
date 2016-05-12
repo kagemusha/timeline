@@ -2,13 +2,13 @@ import PageObject from '../page-object';
 
 const {
   fillable,
-  clickable
 } = PageObject;
 
 export default PageObject.create({
-  clickCreateGame: clickable('.CreateGameButton'),
-  clickJoinGame: clickable('.JoinGameButton'),
-  playerNameInput: fillable(`.PlayerName`),
-  newGameCodeInput: fillable(`.NewGameCode`),
+  createPlayerNameInput: fillable(`.CreatePlayerName`),
+  joinPlayerNameInput: fillable(`.JoinPlayerName`),
+  createGameCodeInput: fillable(`.CreateGameCode`),
+  joinGameCodeInput: fillable(`.JoinGameCode`),
+  cardCountInput: fillable('.CardCount'),
   existingGameCodeInput: fillable(`.ExistingGameCode`),
 });
