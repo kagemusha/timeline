@@ -8,17 +8,12 @@ html, body {
   height: 100%;
 
   background: #829F53;
-  //display: flex;
-  //flex-direction: column;
 }
 
 body > * {
   flex-shrink: 0;
 }
 
-//.content > * {
-//  flex-shrink: 0;
-//}
 
 ul {
   list-style-type: none;
