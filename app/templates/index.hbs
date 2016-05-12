@@ -1,20 +1,25 @@
 <div class="content">
-  <div class="GameForms">
-    <div class="CreateGameForm GameForm">
-      {{input class="PlayerName" placeholder="Player name" value=createGamePlayer}}
-      {{input class="CardCount" placeholder="Card count" value=initialCardCount}}
-      {{input class="NewGameCode" placeholder="Game code" value=newGameCode}}
-      <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
-    </div>
 
+  <div class="GameForms">
+    <div class="GameForms-first">
+      <div class="CreateGameForm GameForm">
+        {{input class="PlayerName" placeholder="Player name" value=createGamePlayer}}
+        {{input class="CardCount" placeholder="Card count" value=initialCardCount}}
+        {{input class="NewGameCode" placeholder="Game code" value=newGameCode}}
+        <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
+      </div>
+      <h1>Timeline</h1>
+    </div>
     <div class="JoinGameForm GameForm">
       {{input class="PlayerName" placeholder="Player name" value=joinGamePlayer}}
       {{input class="NewGameCode" placeholder="Game code" value=joinGameCode}}
       <button class="JoinGameButton" {{action 'joinGame'}} >Join Game</button>
     </div>
   </div>
+
+  {{image-timeline imagesSrc=imagesSrc}}
+
 </div>
-{{image-timeline imagesSrc=imagesSrc}}
 
 
 <!--<div class="EventImage-container">-->
