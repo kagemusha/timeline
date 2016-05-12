@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'li',
   classNames: ['GameBoard-player'],
   classNameBindings: ['isMe', 'isCurrentPlayer:GameBoard-currentPlayer'],
   isCurrentPlayer: Ember.computed.readOnly("player.isCurrentPlayer"),

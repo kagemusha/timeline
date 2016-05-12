@@ -52,11 +52,10 @@
   align-items: center;
   background: white;
   border: 1px solid black;
-  border-top: none;
-  height: 5rem;
-  width: 13rem;
+  height: 4rem;
+  width: 12rem;
   &:first-of-type {
-    border-top: 1px solid black;
+    border-right: none;
   }
   &.isCurrentPlayer {
     background: yellow;
@@ -161,9 +160,9 @@
 .GameBoard-currentCard {
   @include card;
   font-weight: bold;
-  font-size: 1.1rem;
-  width: 20rem;
-  height: 10rem;
+  font-size: 1.2rem;
+  width: 22rem;
+  height: 12rem;
   background: yellow;
   &.game-ended {
     background: lightgray;
@@ -214,7 +213,7 @@ $placeCardButtonColor: black;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 650px;
+  height: 600px;
 }
 
 .GameBoard-status-placedBeforeCard,

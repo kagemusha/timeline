@@ -4,11 +4,9 @@
   <div class="GameBoard-header">
     <h2>{{game.code}}</h2>
     <div class="GameBoard-players">
-      <ul class="PlayerList">
-        {{#each game.players as |player| }}
-          {{player-item player=player thisPlayer=gameService.player}}
-        {{/each}}
-      </ul>
+      {{#each game.players as |player| }}
+        {{player-item player=player thisPlayer=gameService.player}}
+      {{/each}}
     </div>
   </div>
 
@@ -25,8 +23,8 @@
 
       {{#if beforeCard}}
         <div class="GameBoard-status-placedBeforeCard">
-            <div>{{beforeCard.event}}</div>
-            <div>{{beforeCard.year}}</div>
+          <div class="GameBoard-card-event">{{beforeCard.event}}</div>
+          <div>{{beforeCard.year}}</div>
         </div>
       {{/if}}
 
@@ -34,8 +32,8 @@
 
       {{#if afterCard}}
         <div class="GameBoard-status-placedAfterCard">
-            <div>{{afterCard.event}}</div>
-            <div>{{afterCard.year}}</div>
+          <div class="GameBoard-card-event">{{afterCard.event}}</div>
+          <div>{{afterCard.year}}</div>
         </div>
       {{/if}}
 
