@@ -4,7 +4,7 @@ import config from '../config/environment';
 
 const { computed, inject } = Ember;
 
-export default ChannelService.extend({
+export default ChannelService.extend(Ember.Evented, {
   store: inject.service(),
   gameService: inject.service(),
   game: computed.readOnly("gameService.game"),
@@ -45,10 +45,10 @@ export default ChannelService.extend({
     const lastPlayer = this.get('game.currentPlayer');
     const currentPlayer = store.peekRecord('player', payload.current_player);
     game.set('currentPlayer', currentPlayer);
+    const lastCardJson = payload.last_card;
+    const lastCard = this.pushAndReturnObject(lastCardJson, 'card');
 
     if (payload.correct) {
-      const lastCardJson = payload.last_card;
-      const lastCard = this.pushAndReturnObject(lastCardJson, 'card');
       game.get('cards').addObject(lastCard);
 
       // first turn is just setup so no feedback
@@ -67,6 +67,7 @@ export default ChannelService.extend({
     } else {
       console.log('Sorry!')
     }
+    this.trigger('lastMoveResult', {lastPlayer: lastPlayer, lastCard: lastCard, correct: payload.correct, position: payload.position});
     return game;
   },
 

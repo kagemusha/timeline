@@ -204,3 +204,52 @@ $placeCardButtonColor: black;
   }
 }
 
+.GameBoard-status-lastPlayer {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.GameBoard-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 650px;
+}
+
+.GameBoard-status-placedBeforeCard,
+.GameBoard-status-placedAfterCard {
+  @include card;
+  height: 6rem;
+  width: 12rem;
+  font-size: .9rem;
+  background: lightgray;
+  padding: 0 1rem;
+}
+
+.GameBoard-status-placedCard {
+  @include card;
+  height: 8rem;
+  width: 14rem;
+  padding: 0 1rem;
+  background: lightcoral;
+  &.correct {
+    background: lightgreen;
+  }
+}
+
+.GameBoard-lastPlacedTitle {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-botton: 1rem;
+}
+
+.Status-correct-icon {
+  font-size: 6rem;
+  color: lightgreen;
+}
+
+.Status-incorrect-icon {
+  font-size: 6rem;
+  color: lightcoral;
+}

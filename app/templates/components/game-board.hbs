@@ -14,7 +14,39 @@
 
 
   <div class="GameBoard-status">
-    Status
+    {{#if statusMsg}}
+      <div class="GameBoard-statusMsg">{{statusMsg}}</div>
+    {{/if}}
+    {{#if lastMove}}
+      <div class="GameBoard-lastPlacedTitle">Last Move</div>
+      <div>
+        <span class="GameBoard-status-lastPlayer"> {{lastMove.lastPlayer.name}}</span> placed:
+      </div>
+
+      {{#if beforeCard}}
+        <div class="GameBoard-status-placedBeforeCard">
+            <div>{{beforeCard.event}}</div>
+            <div>{{beforeCard.year}}</div>
+        </div>
+      {{/if}}
+
+      <div class="GameBoard-status-placedCard {{if lastMove.correct "correct"}}">{{lastMove.lastCard.event}}</div>
+
+      {{#if afterCard}}
+        <div class="GameBoard-status-placedAfterCard">
+            <div>{{afterCard.event}}</div>
+            <div>{{afterCard.year}}</div>
+        </div>
+      {{/if}}
+
+      <div>
+        {{#if lastMove.correct}}
+          {{fa-icon "check" class="Status-correct-icon"}}
+        {{else}}
+          {{fa-icon "remove" class="Status-incorrect-icon"}}
+        {{/if}}
+      </div>
+    {{/if}}
   </div>
   <div class="GameBoard-currentCardContainer">
     <div class="GameBoard-currentCard">
