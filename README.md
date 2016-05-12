@@ -6,6 +6,10 @@ Currently very WIP.  To get a (not so very well styled :-)) feel for the game, l
 
 See [ember-cli.com](http://ember-cli.com/) for help with ember-cli
 
+## Play the Game
+
+  You can [play the game here](https://timeline-game.firebaseapp.com/)
+  
 ## Running Standalone
 
     Clone the project
