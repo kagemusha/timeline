@@ -12,6 +12,7 @@ export default Ember.Component.extend({
   isMyTurn: computed('gameEnded', 'gameService.player.isCurrentPlayer', function(){
     return !this.get('gameEnded') && this.get('gameService.player.isCurrentPlayer');
   }),
+  statusMsg: "Good luck everyone!!",
 
   didInsertElement() {
     this.get('channelService').on('lastMoveResult', (move)=> {
