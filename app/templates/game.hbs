@@ -22,7 +22,7 @@
         <button class="startGame" {{action 'startGame'}} >Start Game</button>
         <button class="abandonGame" {{action 'abandonGame'}} >Abandon Game</button>
       {{else}}
-        <button class="leaveGame" {{action 'leaveGame'}} >Leave Game</button>
+        <button class="leaveGame" {{action 'abandonGame'}} >Leave Game</button>
       {{/if}}
     </div>
     {{image-timeline imagesSrc=imagesSrc}}
