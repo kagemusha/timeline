@@ -256,3 +256,19 @@ $placeCardButtonColor: black;
 .GameBoard-statusMsg {
   font-size: 1.3rem;
 }
+
+.GameBoard-winner {
+  @include card;
+  font-size: 1.2rem;
+  width: 22rem;
+  height: 12rem;
+  border-radius: 16px;
+  border: black 3px solid;
+}
+
+.GameBoard-winner-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+

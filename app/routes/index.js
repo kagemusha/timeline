@@ -36,6 +36,8 @@ export default Ember.Route.extend({
   setupController(controller, model) {
     this._super(controller, model);
     controller.set('imagesSrc', imagesSrc);
+    controller.set('newGameCode', null);
+    controller.set('joinGameCode', null);
   },
   actions: {
 

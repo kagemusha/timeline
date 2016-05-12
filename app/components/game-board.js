@@ -40,6 +40,9 @@ export default Ember.Component.extend({
   actions: {
     placeCard(position) {
       this.get('gameService').placeCard(position);
+    },
+    playAgain() {
+      this.get('playAgain')();
     }
   }
 });

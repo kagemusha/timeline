@@ -46,10 +46,18 @@
       </div>
     {{/if}}
   </div>
+
   <div class="GameBoard-currentCardContainer">
-    <div class="GameBoard-currentCard">
-      <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
-    </div>
+    {{#if gameEnded}}
+      <div class="GameBoard-winner">
+        <div class="GameBoard-winner-name">{{game.winner.name}} wins!!</div>
+        <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
+      </div>
+    {{else}}
+      <div class="GameBoard-currentCard">
+        <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
+      </div>
+    {{/if}}
   </div>
 
   <div class="GameBoard-cards">

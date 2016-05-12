@@ -28,7 +28,7 @@
     {{image-timeline imagesSrc=imagesSrc}}
   </div>
 {{else}}
-  {{game-board game=game player=player}}
+  {{game-board game=game player=player playAgain=(action "abandonGame") }}
   {{!socket-message-log channelService=channelService}}
 {{/if}}
 

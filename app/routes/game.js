@@ -31,13 +31,4 @@ export default Ember.Route.extend({
     controller.set('imagesSrc', imagesSrc);
   },
 
-  actions: {
-    startGame() {
-      this.get('gameService').startGame();
-    },
-    abandonGame() {
-      this.get('gameService').clear();
-      this.transitionTo('index');
-    }
-  }
 });
