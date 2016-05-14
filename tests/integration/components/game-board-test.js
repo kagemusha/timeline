@@ -1,5 +1,6 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import { AssertMore } from 'timeline/tests/helpers/assert-more';
 
 moduleForComponent('game-board', 'Integration | Component | game board', {
   integration: true
@@ -39,21 +40,3 @@ test('it renders', function(assert) {
   assertm.multilineTextEqual(".GameBoard-cards", [cards[1].event, ''+cards[1].year, cards[0].event, ''+cards[0].year]);
 });
 
-class AssertMore {
-  constructor(assert, context) {
-    this.assert = assert;
-    this.context = context
-  }
-
-  textEqual(selector, expected) {
-    this.assert.equal(this.context.$(selector).text().trim(), expected);
-  }
-  multilineTextEqual(multilineElement, expectedArray, removeBlankLines=true) {
-    let textArray = this.context.$(multilineElement).text().trim().split('\n');
-    textArray = textArray.map(item => item.trim());
-    if (removeBlankLines) {
-      textArray = textArray.reject(item => item.length === 0);
-    }
-    this.assert.deepEqual(textArray, expectedArray);
-  }
-}
