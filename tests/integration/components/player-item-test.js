@@ -6,19 +6,15 @@ moduleForComponent('player-item', 'Integration | Component | player item', {
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{player-item}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#player-item}}
-      template block text
-    {{/player-item}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  const assertEqualText = getEqualTest(assert, this);
+  this.set('player', {name: "Einstein", cardsRemaining: 42});
+  this.render(hbs`{{player-item player=player}}`);
+  assertEqualText('.GameBoard-playerName', 'Einstein');
+  assertEqualText('.GameBoard-playerCardsRemaining', '42 cards left');
 });
+
+function getEqualTest(assert, context) {
+  return function (selector, expected) {
+    assert.equal(context.$(selector).text().trim(), expected);
+  }
+}
