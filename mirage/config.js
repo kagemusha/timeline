@@ -9,6 +9,7 @@ export default function() {
     const gameResponse = {"game": {
                     "id":1,
                     "code": gameCode,
+                    "status": 'waiting-to-start',
                     "players":[
                       {"total_cards":2,
                        "token":"token",
@@ -27,7 +28,12 @@ export default function() {
                         "id":1,
                         "game":1,
                         "cards_remaining": 5},
-                        "game":[{"id": 1, "name":null, "code": player.game_code}]
+                        "game":[{"id": 1,
+                                "name":null,
+                                "status": 'waiting-to-start',
+                                "code": player.game_code
+                              }]
+
                       }
     console.log(`post`, player);
     return new Mirage.Response(201, {}, response);

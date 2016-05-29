@@ -1,6 +1,8 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 const { attr, hasMany } = DS;
+const { computed } = Ember;
 
 export default DS.Model.extend({
   players: hasMany('player'),
@@ -8,8 +10,10 @@ export default DS.Model.extend({
   //turns: hasMany('turn'),
   name: attr(),
   code: attr(),
+  status: attr(),
   initialCardCount: attr(),
-  isWaitingToStart: true,
+  waitingToStart: computed.equal('status', 'waiting-to-start'),
+  started: computed.not('waitingToStart'),
   gameEnded: false,
   winner: null,
   currentCard: null,

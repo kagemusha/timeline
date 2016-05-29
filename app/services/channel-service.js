@@ -19,8 +19,7 @@ export default ChannelService.extend(Ember.Evented, {
       },
 
       "game-started": function(gameJson){
-        const game = this.setGame(gameJson);
-        game.set('isWaitingToStart', false);
+        this.setGame(gameJson);
       },
 
       "turn-result": function(turnJson){
@@ -47,6 +46,7 @@ export default ChannelService.extend(Ember.Evented, {
     game.set('currentPlayer', currentPlayer);
     const lastCardJson = payload.last_card;
     const lastCard = this.pushAndReturnObject(lastCardJson, 'card');
+    game.set('status', payload.status);
 
     if (payload.correct) {
       game.get('cards').addObject(lastCard);

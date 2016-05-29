@@ -1,4 +1,6 @@
-{{#if game.isWaitingToStart}}
+{{#if game.started}}
+  {{game-board game=game player=player playAgain=(action "abandonGame") }}
+{{else}}
   <div class="content">
     <div class="WaitingToStart">
       <h1> {{model.code}}</h1>
@@ -27,8 +29,6 @@
     </div>
     {{image-timeline imagesSrc=imagesSrc}}
   </div>
-{{else}}
-  {{game-board game=game player=player playAgain=(action "abandonGame") }}
-  {{!socket-message-log channelService=channelService}}
+  {{socket-message-log channelService=channelService}}
 {{/if}}
 
