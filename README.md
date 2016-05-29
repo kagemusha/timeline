@@ -1,4 +1,4 @@
-## Timeline
+## Timeline  [![Build Status](https://travis-ci.org/kagemusha/timeline.svg?branch=master)](https://travis-ci.org/kagemusha/timeline)
 
 Online version of the [classic game](http://www.amazon.com/Timeline-Historical-Events-Card-Game/dp/2914849869/ref=pd_sim_21_1?ie=UTF8&dpID=51i4IfOEIaL&dpSrc=sims&preST=_AC_UL160_SR141%2C160_&refRID=1WXSN1GDK2BMAZ2WXTQ0) and demo app for using [Ember.js](http://emberjs.com/) with [PhoenixFramework](http://www.phoenixframework.org/).  See also the [Phoenix Timeline server](https://github.com/kagemusha/phoenix-timeline)
 
