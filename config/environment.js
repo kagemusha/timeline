@@ -21,19 +21,14 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.host = "phoenix-timeline.herokuapp.com";
-    ENV.APP.httpEndpoint = `https://${ENV.APP.host}`;
-    ENV.APP.socketEndpoint = `wss://${ENV.APP.host}/socket`;
+    ENV.APP.httpEndpoint = 'http://' + ENV.APP.host;
+    ENV.APP.socketEndpoint = 'ws://' + ENV.APP.host + '/socket';
   }
 
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.APP.host = "localhost:4000";
-    ENV.APP.httpEndpoint = `http://${ENV.APP.host}`;
-    ENV.APP.socketEndpoint = `ws://${ENV.APP.host}/socket`;
+    ENV.APP.httpEndpoint = 'http://' + ENV.APP.host;
+    ENV.APP.socketEndpoint = 'ws://' + ENV.APP.host + '/socket';
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
