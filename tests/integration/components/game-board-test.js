@@ -22,16 +22,22 @@ test('it renders', function(assert) {
   const jackie = {name: "Jackie", cardsRemaining: 5};
   const steve = {name: "Steve", cardsRemaining: 5};
   const players = [ jackie, steve ];
-  const currentCard = {event: "Javascript", year: 1995};
-  const cards = [ {event: "Ember.js", year: 2011},
-                  {event: "JQuery", year: 2006}
+  const currentCard = {id: 3, event: "Javascript", year: 1995};
+  const cards = [ {id: 1, event: "Ember.js", year: 2011},
+                  {id: 2, event: "JQuery", year: 2006}
                 ];
-  const game = { code: gameCode, players: players, cards: cards, currentCard};
+  const game = {  code: gameCode,
+                  players,
+                  cards,
+                  currentCardId: currentCard.id,
+                  timeline: [2, 1],
+                  status: 'started',
+                  turnCount: 2};
   this.set('jackie', jackie);
   this.set('game', game);
   this.render(hbs`{{game-board game=game player=jackie}}`);
 
-  assertm.textEqual(".GameBoard-header h2", gameCode);
+  assertm.textEqual(".GameBoard-code", gameCode);
   assertm.multilineTextEqual('.GameBoard-player', ['Jackie', '5 cards left', 'Steve', '5 cards left']);
   assertm.textEqual(".GameBoard-status", "Good luck everyone!!");
   assertm.textEqual(".GameBoard-currentCard", currentCard.event);

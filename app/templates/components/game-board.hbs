@@ -2,7 +2,10 @@
 <div class="GameBoard-content">
 
   <div class="GameBoard-header">
-    <h2>{{game.code}}</h2>
+    <h2>
+      <span class="GameBoard-code">{{game.code}}</span>
+      <button {{action "leaveGame"}}>Leave</button>
+    </h2>
     <div class="GameBoard-players">
       {{#each game.players as |player| }}
         {{player-item player=player thisPlayer=gameService.player}}
@@ -15,10 +18,10 @@
     {{#if statusMsg}}
       <div class="GameBoard-statusMsg">{{statusMsg}}</div>
     {{/if}}
-    {{#if lastMove}}
+    {{#if hasLastMove}}
       <div class="GameBoard-lastPlacedTitle">Last Move</div>
       <div>
-        <span class="GameBoard-status-lastPlayer"> {{lastMove.lastPlayer.name}}</span> placed:
+        <span class="GameBoard-status-lastPlayer"> {{game.lastPlayer.name}}</span> placed:
       </div>
 
       {{#if beforeCard}}
@@ -28,7 +31,7 @@
         </div>
       {{/if}}
 
-      <div class="GameBoard-status-placedCard {{if lastMove.correct "correct"}}">{{lastMove.lastCard.event}}</div>
+      <div class="GameBoard-status-placedCard {{if game.lastResult "correct"}}">{{game.lastCard.event}}</div>
 
       {{#if afterCard}}
         <div class="GameBoard-status-placedAfterCard">
@@ -38,7 +41,7 @@
       {{/if}}
 
       <div>
-        {{#if lastMove.correct}}
+        {{#if game.lastResult}}
           {{fa-icon "check" class="Status-correct-icon"}}
         {{else}}
           {{fa-icon "remove" class="Status-incorrect-icon"}}
@@ -48,7 +51,7 @@
   </div>
 
   <div class="GameBoard-currentCardContainer">
-    {{#if gameEnded}}
+    {{#if game.isComplete}}
       <div class="GameBoard-winner">
         <div class="GameBoard-winner-name">{{game.winner.name}} wins!!</div>
         <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
@@ -68,7 +71,7 @@
           <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
         {{/if}}
       {{/unless}}
-      {{#each sortedCards as |card i| }}
+      {{#each game.timelineCards as |card i| }}
         <li class="GameBoard-card">
           <div class="GameBoard-card-event">{{card.event}} </div>
           <br/>

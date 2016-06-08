@@ -6,36 +6,25 @@ export default Ember.Component.extend({
   gameService: inject.service(),
   channelService: inject.service(),
   classNames: ['GameBoard'],
-  cardSorting: ['year'],
-  sortedCards: computed.sort('game.cards', 'cardSorting'),
-  gameEnded: computed.readOnly('game.gameEnded'),
   isMyTurn: computed('gameEnded', 'gameService.player.isCurrentPlayer', function(){
     return !this.get('gameEnded') && this.get('gameService.player.isCurrentPlayer');
   }),
-  statusMsg: "Good luck everyone!!",
 
-  didInsertElement() {
-    this.get('channelService').on('lastMoveResult', (move)=> {
-      this.set('statusMsg', null);
-      this.set('lastMove', move);
-      this.setBeforeAndAfterCards(move);
-    });
-  },
+  statusMsg: computed("game.turnCount", function(){
+    return this.get("game.turnCount") === 1 ? "Good luck everyone!!" : null;
+  }),
 
-  setBeforeAndAfterCards(move) {
-    const position = move.position;
-    const timeline = this.get('sortedCards');
+  hasLastMove: computed.gt("game.turnCount", 1),
+  beforeCard: computed("game.turnCount", function(){
+    const game = this.get('game');
+    return game.cardAt(game.get('lastPlacement'));
+  }),
 
-    const beforeCard = position > -1 ? timeline.objectAt(position) : null;
-    this.set('beforeCard', beforeCard);
-
-    const offset = move.correct ? 2 : 1;
-    let afterCard = null;
-    if (position < timeline.length - offset) {
-      afterCard = timeline.objectAt(position + offset);
-    }
-    this.set('afterCard', afterCard);
-  },
+  afterCard: computed("game.turnCount", function() {
+    const game = this.get('game')
+    const offset = game.get('lastResult') ? 2 : 1;
+    return game.cardAt(game.get('lastPlacement') + offset);
+  }),
 
   actions: {
     placeCard(position) {
@@ -43,6 +32,9 @@ export default Ember.Component.extend({
     },
     playAgain() {
       this.get('playAgain')();
-    }
+    },
+    leaveGame() {
+      this.get('leaveGame')();
+    },
   }
 });

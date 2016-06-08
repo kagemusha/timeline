@@ -3,6 +3,7 @@ import ApplicationSerializer from './application';
 
 export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
   attrs: {
-    players: { embedded: 'always' }
+    players: { embedded: 'always' },
+    cards: { embedded: 'always' },
   }
 });

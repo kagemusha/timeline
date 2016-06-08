@@ -19,11 +19,16 @@ export default ChannelService.extend(Ember.Evented, {
       },
 
       "game-started": function(gameJson){
+        console.log(`game-started`, gameJson);
         this.setGame(gameJson);
       },
 
       "turn-result": function(turnJson){
+        console.log(`turn-result`, turnJson);
         this.setGame(turnJson);
+      },
+      "game-state": function(game){
+        this.get('store').pushPayload(game);
       }
     },
   },
@@ -38,36 +43,16 @@ export default ChannelService.extend(Ember.Evented, {
 
   setGame(payload) {
     const store = this.get('store');
+    store.pushPayload({game: payload.game});
     const game = this.get('game');
-    const currentCard = this.pushAndReturnObject(payload.current_card, 'card');
-    game.set('currentCard', currentCard);
-    const lastPlayer = this.get('game.currentPlayer');
-    const currentPlayer = store.peekRecord('player', payload.current_player);
-    game.set('currentPlayer', currentPlayer);
-    const lastCardJson = payload.last_card;
-    const lastCard = this.pushAndReturnObject(lastCardJson, 'card');
-    game.set('status', payload.status);
 
-    if (payload.correct) {
-      game.get('cards').addObject(lastCard);
-
-      // first turn is just setup so no feedback
-      if (payload.turn_count > 1) {
-        //may want to do this on server
-        lastPlayer.decrementProperty('cardsRemaining');
+    // first turn is just setup so no feedback
+    if (game.get('turnCount') > 1) {
+      if (payload.correct) {
+        game.set('lastPlayer.cardsRemaining', payload.last_player_cards_remaining);
       }
-
-      if (payload.winner_id) {
-        game.set('gameEnded', true);
-        const winner = store.peekRecord('player', payload.winner_id);
-        game.set('winner', winner)
-      } else {
-        console.log('Yes!!');
-      }
-    } else {
-      console.log('Sorry!')
+      this.trigger('lastMoveResult', {correct: payload.correct, position: payload.position});
     }
-    this.trigger('lastMoveResult', {lastPlayer: lastPlayer, lastCard: lastCard, correct: payload.correct, position: payload.position});
     return game;
   },
 

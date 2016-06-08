@@ -29,7 +29,8 @@ export default Ember.Service.extend({
       return channelService.joinChannel(`game:${gameId}`, "game");
     }).then((channel) => {
       this.set('channel', channel);
-      channel.push('get-game-state');
+      console.log(`gettting game state..`);
+      channel.push('get-game-state').receive('error', e=> console.log(e));
     });
   },
 
