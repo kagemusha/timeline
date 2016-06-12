@@ -8,6 +8,7 @@ const errorMsgs = {
 }
 export default Ember.Controller.extend({
   gameService: inject.service(),
+  i18n: inject.service(),
   cardCountRange: cardCountRange,
   initialCardCount: 4,
 
