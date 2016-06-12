@@ -26,7 +26,7 @@ ul {
   margin-left: 20px;
   padding: 20px 0px 20px 30px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 @mixin WhiteCircle($size) {
@@ -43,11 +43,12 @@ ul {
 
 .GameForms {
   padding: 40px 0px 40px 30px;
+  width: calc(90% - 220px);
 }
 
 .GameForm {
-  @include WhiteCircle(360px);
 
+  @include WhiteCircle(360px);
   input {
     font-size: 20px;
     margin-top: 10px;
@@ -55,18 +56,23 @@ ul {
   }
 }
 
+.JoinGame {
+  display: flex;
+  justify-content: flex-end;
+}
+
+h1 {
+  position: fixed;
+  top: -0px;
+  right: 200px;
+  font-family: "Comic Sans MS";
+  font-size: 5rem;
+  margin-left: 4rem;
+}
 
 .GameForms-first {
   display: flex;
   align-items: flex-start;
-
-  h1 {
-    position: absolute;
-    right: 300px;
-    font-family: "Comic Sans MS";
-    font-size: 5rem;
-    margin-left: 4rem;
-  }
 }
 
 button {
@@ -80,14 +86,6 @@ button {
   padding: 6px 10px;
 }
 
-.JoinGame {
-  position: relative;
-}
-
-.JoinGameForm {
-  //margin-top: 10px;
-  margin-left: 390px;
-}
 .IndexPageErrorMsg {
   @include WhiteCircle(120px);
   display: none;
@@ -108,7 +106,9 @@ button {
 
 .ImageTimeline {
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 20px;
+  right: 40px;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
