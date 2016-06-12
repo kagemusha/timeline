@@ -11,25 +11,40 @@ export default Ember.Controller.extend({
   i18n: inject.service(),
   cardCountRange: cardCountRange,
   initialCardCount: 4,
+  createGameErrors: {},
+  joinGameErrors: {},
 
   joinGame(game, player) {
     this.get('gameService').joinGame(game, player);
     this.transitionToRoute('game');
   },
-
   actions: {
     selectedCardCount(count) {
       console.log(`cc`, count);
       this.set('initialCardCount', count);
     },
     createGame() {
+      const errors = {};
       const code = this.get('newGameCode');
-      const cardCount = this.get('initialCardCount');
-      const game = this.store.createRecord('game', {code: code, initialCardCount: cardCount});
+      if (isBlank(code)) {
+        errors.blankGameCode = this.get('i18n') .t('errors.blank.game.code');
+      }
 
       const playerName = this.get('createGamePlayer');
+      if (isBlank(playerName)) {
+        errors.blankPlayerName = this.get('i18n') .t('errors.blank.player.name');
+      }
+
+      this.set('createGameErrors', errors)
+      if (Object.keys(errors).length > 0) {
+        return;
+      }
+
+      const cardCount = this.get('initialCardCount');
+      const game = this.store.createRecord('game', {code: code, initialCardCount: cardCount});
       const player = this.store.createRecord('player', {name: playerName});
       game.get("players").addObject(player);
+
       game.save().then((game) => {
         //ember data is putting returned player as a new player
         //get rid of initial player and set player to returned player
@@ -44,9 +59,23 @@ export default Ember.Controller.extend({
     },
 
     joinGame() {
-      const gameCode = this.get('joinGameCode');
+      const errors = {};
+      const code = this.get('joinGameCode');
+      if (isBlank(code)) {
+        errors.blankGameCode = this.get('i18n') .t('errors.blank.game.code');
+      }
+
       const playerName = this.get('joinGamePlayer');
-      const attrs = {name: playerName, gameCode: gameCode}
+      if (isBlank(playerName)) {
+        errors.blankPlayerName = this.get('i18n') .t('errors.blank.player.name');
+      }
+
+      this.set('joinGameErrors', errors)
+      if (Object.keys(errors).length > 0) {
+        return;
+      }
+
+      const attrs = {name: playerName, gameCode: code}
       const player = this.store.createRecord('player', attrs);
 
       player.save().then((player) => {

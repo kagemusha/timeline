@@ -2,9 +2,12 @@
 
   <div class="GameForms">
     <div class="GameForms-first">
+      <h1>Timeline</h1>
       <div class="CreateGameForm GameForm">
         {{input class="CreatePlayerName" placeholder="Player name" value=createGamePlayer}}
+        {{error-egg top="-10px" right="-200px" errors=createGameErrors errorKey="blankPlayerName" }}
         {{input class="CreateGameCode" placeholder="Game code" value=newGameCode}}
+        {{error-egg top="170px" right="-200px" errors=createGameErrors errorKey="blankGameCode" }}
         <div>&nbsp;<!--fake out flexbox --></div>
         {{#simple-select
           value=initialCardCount
@@ -17,12 +20,16 @@
         <br/>
         <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
       </div>
-      <h1>Timeline</h1>
     </div>
-    <div class="JoinGameForm GameForm">
-      {{input class="JoinPlayerName" placeholder="Player name" value=joinGamePlayer}}
-      {{input class="JoinGameCode" placeholder="Game code" value=joinGameCode}}
-      <button class="JoinGameButton" {{action 'joinGame'}} >Join Game</button>
+
+    <div class="JoinGame">
+      <div class="JoinGameForm GameForm">
+        {{input class="JoinPlayerName" placeholder="Player name" value=joinGamePlayer}}
+        {{error-egg top="10px" left="170px" errors=joinGameErrors errorKey="blankPlayerName" }}
+        {{input class="JoinGameCode" placeholder="Game code" value=joinGameCode}}
+        {{error-egg top="200px" left="170px" errors=joinGameErrors errorKey="blankGameCode" }}
+        <button class="JoinGameButton" {{action 'joinGame'}} >Join Game</button>
+      </div>
     </div>
   </div>
 
