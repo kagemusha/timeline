@@ -5,7 +5,16 @@
       <div class="CreateGameForm GameForm">
         {{input class="CreatePlayerName" placeholder="Player name" value=createGamePlayer}}
         {{input class="CreateGameCode" placeholder="Game code" value=newGameCode}}
-        {{input class="CardCount" placeholder="Card count" value=initialCardCount}}
+        <div>&nbsp;<!--fake out flexbox --></div>
+        {{#simple-select
+          value=initialCardCount
+          label-key='name'
+          on-select=(action 'selectedCardCount') as |sb|}}
+          {{#each cardCountRange as |count|}}
+            {{#sb.option value=count}}Place {{pluralize count "card"}} to win {{/sb.option}}
+          {{/each}}
+        {{/simple-select}}
+        <br/>
         <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
       </div>
       <h1>Timeline</h1>

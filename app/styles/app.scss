@@ -1,6 +1,7 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "games";
+@import "simple-select";
 
 * { padding: 0; margin: 0; }
 
@@ -70,6 +71,10 @@ button {
   border: 2px black solid;
   cursor: pointer;
   padding: 6px 10px;
+}
+
+.JoinGame {
+  position: relative;
 }
 
 .JoinGameForm {
@@ -146,4 +151,8 @@ button {
   font-weight: bold;
   font-style: italic;
   margin-bottom: 40px;
+}
+
+.CreateGameForm {
+  position: relative;
 }

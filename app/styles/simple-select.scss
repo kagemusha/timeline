@@ -1,0 +1,40 @@
+.simple-select {
+  position: absolute;
+  background: white;
+  top: 10em;
+  left: 4rem;
+  z-index: 2;
+  display: inline-block;
+  border: 1px solid silver;
+  margin: 2px;
+  padding: 2px;
+  font-size: 20px;
+  opacity: 1.0;
+}
+.simple-select-selected-option {
+  cursor: pointer;
+  min-width: 200px;
+  -webkit-user-select: none;
+}
+.simple-select.is-focused {
+  border-color: #666;
+}
+.simple-select.is-focused {
+  outline: none
+}
+.simple-select:not(.is-open) .simple-select-options {
+  display: none
+}
+.simple-select-options {
+  max-height: 200px;
+  overflow: auto;
+}
+.simple-select-option {
+  cursor: pointer;
+}
+.simple-select-option.is-active {
+  border-color: green
+}
+.simple-select-option.is-selected {
+  border-color: red
+}
