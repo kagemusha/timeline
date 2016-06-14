@@ -9,33 +9,38 @@
 
 {{else}}
 
-  <div class="content">
-    <div class="WaitingToStart">
-      <h1> {{model.code}}</h1>
+  <div class="Waiting-content">
+    <div class="Game-status">
+      <div class="WaitingToStart">
+        <h2> Game code:</h2>
+        {{model.code}}
 
-      <div class="Game-players">
-        <h3>Who's here</h3>
-        <ul>
-          {{#each game.players as |player| }}
-            <li class="Game-player">
-              {{player.name}}
-            </li>
-          {{/each}}
-        </ul>
+        <div class="Game-players">
+          <h2>Who's here:</h2>
+          <ul>
+            {{#each game.players as |player| }}
+              <li class="Game-player">
+                {{player.name}}
+              </li>
+            {{/each}}
+          </ul>
+        </div>
       </div>
 
-      <div class="GameStatus">
-        Waiting to start...
-      </div>
 
       {{#if player.isCreator}}
-        <button class="startGame" {{action 'startGame'}} >Start Game</button>
-        <button class="abandonGame" {{action 'abandonGame'}} >Abandon Game</button>
+        <div class="StartButtons">
+          <button class="startGame" {{action 'startGame'}} >Start Game</button>
+          <button class="abandonGame" {{action 'abandonGame'}} >Abandon Game</button>
+        </div>
       {{else}}
+        <div>
+          Waiting to start...
+        </div>
         <button class="leaveGame" {{action 'abandonGame'}} >Leave Game</button>
       {{/if}}
     </div>
-    {{image-timeline imagesSrc=imagesSrc}}
+    {{image-timeline imagesSrc=imagesSrc class="ImageTimeline"}}
   </div>
 
 {{/if}}

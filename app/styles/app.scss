@@ -1,6 +1,7 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "games";
+@import "variables";
 @import "simple-select";
 
 * { padding: 0; margin: 0; }
@@ -27,18 +28,6 @@ ul {
   padding: 20px 0px 20px 30px;
   display: flex;
   justify-content: flex-start;
-}
-
-@mixin WhiteCircle($size) {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  border-radius: 50%;
-  border: 4px black solid;
-  width: $size;
-  height: $size;
 }
 
 .GameForms {
@@ -163,18 +152,6 @@ button {
 
 .WaitingToStart {
   padding: 40px 0;
-}
-
-.Game-players {
-  font-size: 24px;
-  margin: 20px 0 40px 0;
-}
-
-.GameStatus {
-  font-size: 30px;
-  font-weight: bold;
-  font-style: italic;
-  margin-bottom: 40px;
 }
 
 .CreateGameForm {

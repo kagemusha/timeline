@@ -1,0 +1,12 @@
+@mixin WhiteCircle($size) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 50%;
+  border: 4px black solid;
+  width: $size;
+  height: $size;
+}
+

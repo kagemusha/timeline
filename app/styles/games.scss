@@ -1,3 +1,5 @@
+@import "variables";
+
 #Game-top {
   width: 100%;
   padding: 10px 0;
@@ -12,7 +14,30 @@
   border-bottom: 2px solid black;
   z-index: 100;
 }
+.Waiting-content {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+}
 
+.Game-status {
+  @include WhiteCircle(600px);
+  font-size: 22px;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  //background: white;
+  //padding: 10px;
+  //border: 3px black solid;
+  //height: 300px;
+  //width: 300px;
+  //border-radius: 50%;
+}
+
+.Game-players {
+  margin: 20px 0 40px 0;
+}
 
 #Game-winner {
   background: yellow;
