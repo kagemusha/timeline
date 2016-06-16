@@ -12,76 +12,79 @@
       {{/each}}
     </div>
   </div>
+  <div class="GameBoard-body">
+    <div class="GameBoard-status">
+      {{#if statusMsg}}
+        <div class="GameBoard-statusMsg">{{statusMsg}}</div>
+      {{/if}}
+      {{#if hasLastMove}}
+        <div class="GameBoard-lastPlacedTitle">Last Move</div>
+        <div>
+          <span class="GameBoard-status-lastPlayer"> {{game.lastPlayer.name}}</span> placed:
+        </div>
 
+        {{#if beforeCard}}
+          <div class="GameBoard-status-placedBeforeCard">
+            <div class="GameBoard-card-event">{{beforeCard.event}}</div>
+            <div>{{beforeCard.timeLabel}}</div>
+          </div>
+        {{/if}}
 
-  <div class="GameBoard-status">
-    {{#if statusMsg}}
-      <div class="GameBoard-statusMsg">{{statusMsg}}</div>
-    {{/if}}
-    {{#if hasLastMove}}
-      <div class="GameBoard-lastPlacedTitle">Last Move</div>
-      <div>
-        <span class="GameBoard-status-lastPlayer"> {{game.lastPlayer.name}}</span> placed:
-      </div>
+        <div class="GameBoard-status-placedCard {{if game.lastResult "correct"}}">{{game.lastCard.event}}</div>
 
-      {{#if beforeCard}}
-        <div class="GameBoard-status-placedBeforeCard">
-          <div class="GameBoard-card-event">{{beforeCard.event}}</div>
-          <div>{{beforeCard.timeLabel}}</div>
+        {{#if afterCard}}
+          <div class="GameBoard-status-placedAfterCard">
+            <div class="GameBoard-card-event">{{afterCard.event}}</div>
+            <div>{{afterCard.timeLabel}}</div>
+          </div>
+        {{/if}}
+
+        <div>
+          {{#if game.lastResult}}
+            {{fa-icon "check" class="Status-correct-icon"}}
+          {{else}}
+            {{fa-icon "remove" class="Status-incorrect-icon"}}
+          {{/if}}
         </div>
       {{/if}}
+    </div>
 
-      <div class="GameBoard-status-placedCard {{if game.lastResult "correct"}}">{{game.lastCard.event}}</div>
-
-      {{#if afterCard}}
-        <div class="GameBoard-status-placedAfterCard">
-          <div class="GameBoard-card-event">{{afterCard.event}}</div>
-          <div>{{afterCard.timeLabel}}</div>
+    <div class="GameBoard-currentCardContainer">
+      {{#if game.isComplete}}
+        <div class="GameBoard-winner">
+          <div class="GameBoard-winner-name">{{game.winner.name}} wins!!</div>
+          <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
+        </div>
+      {{else}}
+        <div class="GameBoard-currentCard">
+          <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
         </div>
       {{/if}}
+    </div>
 
-      <div>
-        {{#if game.lastResult}}
-          {{fa-icon "check" class="Status-correct-icon"}}
-        {{else}}
-          {{fa-icon "remove" class="Status-incorrect-icon"}}
-        {{/if}}
-      </div>
-    {{/if}}
+    <div class="GameBoard-cards">
+      <div class="listLine">&nbsp;</div>
+      <ul class="GameBoard-cardList">
+        {{#unless gameEnded}}
+          {{#if isMyTurn}}
+            <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
+          {{/if}}
+        {{/unless}}
+        {{#each game.timelineCards as |card i| }}
+          <li class="GameBoard-card">
+            <div class="GameBoard-card-event">{{card.event}} </div>
+            <br/>
+            <div>{{card.timeLabel}} </div>
+          </li>
+          {{#if isMyTurn}}
+            <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    </div>
   </div>
 
-  <div class="GameBoard-currentCardContainer">
-    {{#if game.isComplete}}
-      <div class="GameBoard-winner">
-        <div class="GameBoard-winner-name">{{game.winner.name}} wins!!</div>
-        <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
-      </div>
-    {{else}}
-      <div class="GameBoard-currentCard">
-        <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
-      </div>
-    {{/if}}
+  <div class="GameBoard-footer">
+    &nbsp;
   </div>
-
-  <div class="GameBoard-cards">
-    <div class="listLine">&nbsp;</div>
-    <ul class="GameBoard-cardList">
-      {{#unless gameEnded}}
-        {{#if isMyTurn}}
-          <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
-        {{/if}}
-      {{/unless}}
-      {{#each game.timelineCards as |card i| }}
-        <li class="GameBoard-card">
-          <div class="GameBoard-card-event">{{card.event}} </div>
-          <br/>
-          <div>{{card.timeLabel}} </div>
-        </li>
-        {{#if isMyTurn}}
-          <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
-        {{/if}}
-      {{/each}}
-    </ul>
-  </div>
-
 </div>
