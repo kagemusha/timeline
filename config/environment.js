@@ -23,12 +23,14 @@ module.exports = function(environment) {
     ENV.APP.host = "phoenix-timeline.herokuapp.com";
     ENV.APP.httpEndpoint = 'http://' + ENV.APP.host;
     ENV.APP.socketEndpoint = 'ws://' + ENV.APP.host + '/socket';
+    ENV.cardCount = 10;
   }
 
   if (environment === 'development') {
     ENV.APP.host = "localhost:4000";
     ENV.APP.httpEndpoint = 'http://' + ENV.APP.host;
     ENV.APP.socketEndpoint = 'ws://' + ENV.APP.host + '/socket';
+    ENV.cardCount = 3;
     ENV['ember-cli-mirage'] = {
       enabled: false
     };

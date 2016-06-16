@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 const MOCK_INPUT = true;
 
 const imagesSrc = [
@@ -35,10 +36,10 @@ export default Ember.Route.extend({
     controller.set('cardsets', model);
     controller.set('cardset', model.findBy('name', 'general'));
     controller.set('imagesSrc', imagesSrc);
+    controller.set('initialCardCount', config.cardCount);
     if (MOCK_INPUT) {
       controller.setProperties({
         'createGamePlayer': 'mm',
-        'initialCardCount': '4',
         'newGameCode': `m${Date.now()}`
       });
     } else {
