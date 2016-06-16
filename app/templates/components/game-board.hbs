@@ -27,7 +27,7 @@
       {{#if beforeCard}}
         <div class="GameBoard-status-placedBeforeCard">
           <div class="GameBoard-card-event">{{beforeCard.event}}</div>
-          <div>{{beforeCard.year}}</div>
+          <div>{{beforeCard.timeLabel}}</div>
         </div>
       {{/if}}
 
@@ -36,7 +36,7 @@
       {{#if afterCard}}
         <div class="GameBoard-status-placedAfterCard">
           <div class="GameBoard-card-event">{{afterCard.event}}</div>
-          <div>{{afterCard.year}}</div>
+          <div>{{afterCard.timeLabel}}</div>
         </div>
       {{/if}}
 
@@ -75,7 +75,7 @@
         <li class="GameBoard-card">
           <div class="GameBoard-card-event">{{card.event}} </div>
           <br/>
-          <div>{{card.year}} </div>
+          <div>{{card.timeLabel}} </div>
         </li>
         {{#if isMyTurn}}
           <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
