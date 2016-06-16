@@ -2,10 +2,10 @@
 <div class="GameBoard-content">
 
   <div class="GameBoard-header">
-    <h2>
-      <span class="GameBoard-code">{{game.code}}</span>
-      <button {{action "leaveGame"}}>Leave</button>
-    </h2>
+    <div class="GameBoard-title">
+      <span class="GameBoard-code">{{title}}</span>
+      <span class="GameBoard-leaveGame" {{action "leaveGame"}}>Leave</span>
+    </div>
     <div class="GameBoard-players">
       {{#each game.players as |player| }}
         {{player-item player=player thisPlayer=gameService.player}}

@@ -6,6 +6,9 @@ export default Ember.Component.extend({
   gameService: inject.service(),
   channelService: inject.service(),
   classNames: ['GameBoard'],
+  title: computed('game.name', function(){
+    return this.get('game.name') || "Timeline!"
+  }),
   isMyTurn: computed('gameEnded', 'gameService.player.isCurrentPlayer', function(){
     return !this.get('gameEnded') && this.get('gameService.player.isCurrentPlayer');
   }),

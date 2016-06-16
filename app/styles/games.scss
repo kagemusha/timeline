@@ -21,6 +21,7 @@
   align-items: center;
 }
 
+
 .Game-status {
   @include WhiteCircle(600px);
   font-size: 22px;
@@ -55,12 +56,28 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-left: 3rem;
   padding-top: 5rem;
 }
 
 .GameBoard-header {
   position: absolute;
   top: 1rem;
+}
+
+.GameBoard-title {
+  font-family: "Comic Sans MS";
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.GameBoard-leaveGame {
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-left: 4px;
+  padding: 2px 4px;
 }
 
 .GameBoard-players {
