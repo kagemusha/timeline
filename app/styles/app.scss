@@ -2,7 +2,8 @@
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "games";
 @import "variables";
-@import "simple-select";
+
+@import "ember-power-select";
 
 * { padding: 0; margin: 0; }
 
@@ -37,7 +38,7 @@ ul {
 
 .GameForm {
 
-  @include WhiteCircle(360px);
+  @include WhiteCircle(400px);
   input {
     font-size: 20px;
     margin-top: 10px;
@@ -156,4 +157,12 @@ button {
 
 .CreateGameForm {
   position: relative;
+}
+
+.CreateGameForm-cardCountSelect {
+  width: 200px
+}
+
+.CreateGameForm-cardsetSelect {
+  width: 200px
 }

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const { computed, inject, isBlank } = Ember;
-const cardCountRange = Array.from(Array(101).keys()).slice(1);
+const cardCountRange = Array.from(Array(51).keys()).slice(1);
 
 const errorMsgs = {
   "game-not-found": "No code found for <strong>"
@@ -9,8 +9,9 @@ const errorMsgs = {
 export default Ember.Controller.extend({
   gameService: inject.service(),
   i18n: inject.service(),
-  cardCountRange: cardCountRange,
+  cardCountRange,
   initialCardCount: 4,
+  cardset: null, //set in route
   createGameErrors: {},
   joinGameErrors: {},
 
@@ -19,8 +20,11 @@ export default Ember.Controller.extend({
     this.transitionToRoute('game');
   },
   actions: {
-    selectedCardCount(count) {
-      console.log(`cc`, count);
+    cardsetChanged(cardset) {
+      console.log(`ccc`, cardset.get('displayName'));
+      this.set('selectedCardset', cardset);
+    },
+    cardCountChanged(count) {
       this.set('initialCardCount', count);
     },
     createGame() {
@@ -44,6 +48,7 @@ export default Ember.Controller.extend({
       const game = this.store.createRecord('game', {code: code, initialCardCount: cardCount});
       const player = this.store.createRecord('player', {name: playerName});
       game.get("players").addObject(player);
+      game.set('cardset', this.get('cardset'));
 
       game.save().then((game) => {
         //ember data is putting returned player as a new player

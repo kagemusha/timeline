@@ -27,16 +27,23 @@ export default Ember.Route.extend({
       }
     }
   },
+  model() {
+    return this.store.findAll('cardset');
+  },
   setupController(controller, model) {
     this._super(controller, model);
+    controller.set('cardsets', model);
+    controller.set('cardset', model.findBy('name', 'general'));
     controller.set('imagesSrc', imagesSrc);
     if (MOCK_INPUT) {
-      controller.set('createGamePlayer', 'mm');
-      controller.set('initialCardCount', '4');
-      controller.set('newGameCode', `m${Date.now()}`);
+      controller.setProperties({
+        'createGamePlayer': 'mm',
+        'initialCardCount': '4',
+        'newGameCode': `m${Date.now()}`
+      });
+    } else {
+      controller.set('newGameCode', null);
     }
-    //end remove
-    //controller.set('newGameCode', null);
     controller.set('joinGameCode', null);
   },
 });

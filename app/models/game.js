@@ -1,12 +1,14 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-const { attr, hasMany } = DS;
+const { attr, hasMany, belongsTo } = DS;
 const { computed } = Ember;
 
 export default DS.Model.extend({
   players: hasMany('player'),
   cards: hasMany('card'),
+  cardset: belongsTo('cardset'),
+
   timeline: attr('array'),
   timelineCards: computed.map('timeline', function(cardId){
     return this.store.peekRecord('card', cardId);
