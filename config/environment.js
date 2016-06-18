@@ -21,8 +21,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.APP.host = "phoenix-timeline.herokuapp.com";
-    ENV.APP.httpEndpoint = 'http://' + ENV.APP.host;
-    ENV.APP.socketEndpoint = 'ws://' + ENV.APP.host + '/socket';
+    ENV.APP.httpEndpoint = 'https://' + ENV.APP.host;
+    ENV.APP.socketEndpoint = 'wss://' + ENV.APP.host + '/socket';
     ENV.cardCount = 10;
   }
 
