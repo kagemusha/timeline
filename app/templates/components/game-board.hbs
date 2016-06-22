@@ -69,20 +69,14 @@
     <div class="GameBoard-cards">
       <div class="listLine">&nbsp;</div>
       <ul class="GameBoard-cardList">
-        {{#unless gameEnded}}
-          {{#if isMyTurn}}
-            <li class="GameBoard-placeCardButton" {{action 'placeCard' -1}}>Place here</li>
-          {{/if}}
-        {{/unless}}
+        {{place-card-button position=-1 isComplete=game.isComplete isMyTurn=isMyTurn placeCard="placeCard" }}
         {{#each game.timelineCards as |card i| }}
           <li class="GameBoard-card">
             <div class="GameBoard-card-event">{{card.event}} </div>
             <br/>
             <div>{{card.timeLabel}} </div>
           </li>
-          {{#if isMyTurn}}
-            <li class="GameBoard-placeCardButton" {{action 'placeCard' i}}>Place here</li>
-          {{/if}}
+          {{place-card-button position=i isComplete=game.isComplete isMyTurn=isMyTurn placeCard="placeCard" }}
         {{/each}}
       </ul>
     </div>
