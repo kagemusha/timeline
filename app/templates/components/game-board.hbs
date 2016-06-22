@@ -52,7 +52,11 @@
     <div class="GameBoard-currentCardContainer">
       {{#if game.isComplete}}
         <div class="GameBoard-winner">
-          <div class="GameBoard-winner-name">{{game.winner.name}} wins!!</div>
+          {{#if noMoreCards}}
+            <div class="GameBoard-noMoreCardsMsg">No more cards, so game over!</div>
+            <br/>
+          {{/if}}
+          <div class="GameBoard-winner-name">{{winners}}!</div>
           <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
         </div>
       {{else}}

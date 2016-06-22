@@ -40,9 +40,9 @@ export default DS.Model.extend({
   lastPlayer: computed('lastPlayerId', function(){
     return this.store.peekRecord('player', this.get('lastPlayerId'));
   }),
-  winnerId: attr(),
-  winner: computed('winnerId', function(){
-    return this.store.peekRecord('player', this.get('winnerId'));
+  winnerIds: attr(),
+  winners: computed.map('winnerIds', function(id){
+    return this.store.peekRecord('player', id);
   }),
 
   cardAt(position) {

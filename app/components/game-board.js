@@ -29,6 +29,17 @@ export default Ember.Component.extend({
     return game.cardAt(game.get('lastPlacement') + offset);
   }),
 
+  winners: computed("game.winners", function(){
+    const winners = this.get('game.winners').map(player => player.get('name')).join(", ");
+    const lastWinner = winners.slice(-1)[0];
+    const names = winners.replace(`, ${lastWinner}`, ` and ${lastWinner}`);
+    return `${names} ${this.get('game.winners.length') === 1 ? "wins":"win"}`
+  }),
+  noMoreCards: computed("game.winners", function(){
+    const winner = this.get("game.winners").objectAt(0);
+    return winner && winner.get('cardsRemaining') > 0;
+  }),
+
   actions: {
     placeCard(position) {
       this.get('gameService').placeCard(position);
