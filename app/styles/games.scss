@@ -161,6 +161,24 @@ $timeline-width: 300px;
   }
 }
 
+$gameboard-image-left: 110px;
+$gameboard-image-topbottom: -115px;
+
+@mixin GameBoardTimelineImage {
+  position: absolute;
+  left: $gameboard-image-left;
+  z-index: 301;
+}
+.GameBoard-topImage {
+  @include GameBoardTimelineImage;
+  top: $gameboard-image-topbottom;
+}
+
+.GameBoard-bottomImage {
+  @include GameBoardTimelineImage;
+  bottom: $gameboard-image-topbottom;
+}
+
 .GameBoard-cardList {
   display: flex;
   background: #b7db7a;

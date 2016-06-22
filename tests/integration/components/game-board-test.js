@@ -43,6 +43,6 @@ test('it renders', function(assert) {
   assertm.textEqual(".GameBoard-currentCard", currentCard.event);
 
   //card order is sorted
-  assertm.multilineTextEqual(".GameBoard-cards", [cards[1].event, ''+cards[1].year, cards[0].event, ''+cards[0].year]);
+  assertm.multilineTextEqual(".GameBoard-timeline", [cards[1].event, ''+cards[1].year, cards[0].event, ''+cards[0].year]);
 });
 
