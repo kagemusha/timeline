@@ -172,29 +172,29 @@ $gameboard-image-topbottom: -115px;
   bottom: $gameboard-image-topbottom;
 }
 @mixin firstInstructions {
+  font-family: "Comic Sans MS";
   position: absolute;
   z-index: 301;
   color: red;
-  font-size: 1.35rem;
+  font-size: 1.30rem;
   font-weight: bold;
 }
 
 .GameBoard-topInstruction {
   @include firstInstructions;
-  top: 148px;
-  left: -270px;
+  top: 115px;
+  left: -285px;
 }
 .GameBoard-bottomInstruction {
   @include firstInstructions;
-  top: 557px;
-  left: -275px;
+  top: 585px;
+  left: -295px;
 }
 
 .GameBoard-firstRoundInstructions {
   @include firstInstructions;
-  font-size: 1.6rem;
-  left: -190px;
-  top: 100px;
+  left: -210px;
+  top: 60px;
 }
 
 .GameBoard-timelineImage {
@@ -372,6 +372,20 @@ $placeCardButtonColor: black;
   color: red;
   font-size: 2.2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
 }
 
+.GameBoard-winner.lost{
+  background: lightcoral;
+  .GameBoard-winner-name {
+    color: black;
+  }
+}
+
+.GameBoard-sorry {
+  font-size: 1.4rem;
+  margin-top: 0.4rem;
+}
+
+.GameBoard-playAgain {
+  margin-top: 1rem;
+}

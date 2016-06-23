@@ -53,13 +53,16 @@
 
     <div class="GameBoard-currentCardContainer">
       {{#if game.isComplete}}
-        <div class="GameBoard-winner">
+        <div class="GameBoard-winner {{if lost "lost"}}">
           {{#if noMoreCards}}
             <div class="GameBoard-noMoreCardsMsg">No more cards, so game over!</div>
             <br/>
           {{/if}}
           <div class="GameBoard-winner-name">{{winners}}!</div>
-          <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
+          {{#if lost}}
+            <div class="GameBoard-sorry">sorry</div>
+          {{/if}}
+          <div class="GameBoard-playAgain"><button {{action "playAgain"}}>Play again</button></div>
         </div>
       {{else}}
         {{#liquid-bind game.currentCard use="crossFade" duration=2000 as |currentCard| }}

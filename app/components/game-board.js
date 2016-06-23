@@ -9,6 +9,7 @@ export default Ember.Component.extend({
   title: computed('game.name', function(){
     return this.get('game.name') || "Timeline!"
   }),
+  me: computed.readOnly('gameService.player'),
   isMyTurn: computed('gameEnded', 'gameService.player.isCurrentPlayer', function(){
     return !this.get('gameEnded') && this.get('gameService.player.isCurrentPlayer');
   }),
@@ -45,11 +46,19 @@ export default Ember.Component.extend({
     return `${Math.abs(year)} ${year < 0 ? " BC":""}`
   }),
   winners: computed("game.winners", function(){
-    const winners = this.get('game.winners').map(player => player.get('name')).join(", ");
+    const winners = this.get('game.winners').map(player => {
+      return this.get('me') === player ? "you" : player.get('name');
+    }).join(", ");
     const lastWinner = winners.slice(-1)[0];
-    const names = winners.replace(`, ${lastWinner}`, ` and ${lastWinner}`);
-    return `${names} ${this.get('game.winners.length') === 1 ? "wins":"win"}`
+    let names = winners.replace(`, ${lastWinner}`, ` and ${lastWinner}`);
+    names = Ember.String.capitalize(names);
+    return `${names} won`
   }),
+
+  lost: computed("game.winners", function(){
+    return this.get("game.winners").indexOf(this.get("me")) === -1;
+  }),
+
   noMoreCards: computed("game.winners", function(){
     const winner = this.get("game.winners").objectAt(0);
     return winner && winner.get('cardsRemaining') > 0;
