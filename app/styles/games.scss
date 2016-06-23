@@ -43,9 +43,6 @@
 }
 
 .GameBoard-content {
-  //display: flex;
-  //flex-direction: column;
-  //align-items: flex-start;
   min-width: 1200px;
   padding: 1.0rem 4rem;
   overflow: hidden;
@@ -53,7 +50,6 @@
 
 $GameBoardHeaderHeight: 4rem;
 $GameBoardBodyPaddingTop: 3rem;
-$GameBoardFooterHeight: 2rem;
 
 .GameBoard-header {
   display: flex;
@@ -69,13 +65,9 @@ $GameBoardFooterHeight: 2rem;
   justify-content: space-around;
   align-items: center;
   padding-top: $GameBoardBodyPaddingTop;
+  padding-bottom: 5rem;
   margin-right: 4rem; //why needed?
   width: 100%;
-  //height: calc(90% - $GameBoardHeaderHeight - $GameBoardBodyPaddingTop - $GameBoardFooterHeight);
-}
-
-.GameBoad-footer {
-  height: $GameBoardFooterHeight;
 }
 
 .GameBoard-title {
@@ -147,12 +139,10 @@ $GameBoardFooterHeight: 2rem;
   padding: 6px;
 }
 
-.GameBoard-currentCardContainer {
-
-}
 
 $timeline-width: 300px;
-.GameBoard-cards {
+
+.GameBoard-timeline {
   position: relative;
   height: 100%;
   width: $timeline-width;
