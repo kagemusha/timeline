@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import config from '../config/environment';
-const MOCK_INPUT = true;
 
 const imagesSrc = [
   'http://www.china-mike.com/wp-content/uploads/2011/03/terracotta-army-warriors-xian.png',
@@ -37,7 +36,7 @@ export default Ember.Route.extend({
     controller.set('cardset', model.findBy('name', 'general'));
     controller.set('imagesSrc', imagesSrc);
     controller.set('initialCardCount', config.cardCount);
-    if (MOCK_INPUT) {
+    if (config.mockInput) {
       controller.setProperties({
         'createGamePlayer': 'mm',
         'newGameCode': `m${Date.now()}`
