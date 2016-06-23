@@ -92,6 +92,7 @@
       {{/if}}
       <div class="listLine">&nbsp;</div>
       <ul class="GameBoard-cardList">
+        <li>&nbsp;</li>
         {{place-card-button position=-1 isComplete=game.isComplete isMyTurn=isMyTurn placeCard="placeCard" }}
         {{#each game.timelineCards as |card i| }}
           <li class="GameBoard-card">
@@ -100,6 +101,7 @@
             <div>{{card.timeLabel}} </div>
           </li>
           {{place-card-button position=i isComplete=game.isComplete isMyTurn=isMyTurn placeCard="placeCard" }}
+          <li>&nbsp;</li>
         {{/each}}
       </ul>
     </div>
