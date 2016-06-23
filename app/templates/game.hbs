@@ -3,6 +3,7 @@
   {{game-board
     game=game
     player=player
+    canLeave=canLeave
     playAgain=(action "abandonGame")
     leaveGame=(action "abandonGame")
   }}
@@ -36,7 +37,9 @@
         <div>
           Waiting to start...
         </div>
-        <button class="leaveGame" {{action 'abandonGame'}} >Leave Game</button>
+        {{#if canLeave}}
+          <button class="leaveGame" {{action 'abandonGame'}} >Leave Game</button>
+        {{/if}}
       {{/if}}
 
     </div>

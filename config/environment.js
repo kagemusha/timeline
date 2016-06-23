@@ -32,6 +32,7 @@ module.exports = function(environment) {
     ENV.APP.socketEndpoint = 'ws://' + ENV.APP.host + '/socket';
     ENV.cardCount = 3;
     ENV.mockInput = true;
+    ENV.canLeave = true;
     ENV['ember-cli-mirage'] = {
       enabled: false
     };

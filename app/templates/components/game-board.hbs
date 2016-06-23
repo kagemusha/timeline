@@ -4,7 +4,9 @@
   <div class="GameBoard-header">
     <div class="GameBoard-title">
       <span class="GameBoard-code">{{title}}</span>
-      <span class="GameBoard-leaveGame" {{action "leaveGame"}}>Leave</span>
+      {{#if canLeave}}
+        <span class="GameBoard-leaveGame" {{action "leaveGame"}}>Leave</span>
+      {{/if}}
     </div>
     <div class="GameBoard-players">
       {{#each game.players as |player| }}
