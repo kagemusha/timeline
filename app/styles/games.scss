@@ -19,12 +19,15 @@
   margin-top: 100px;
   justify-content: center;
   align-items: center;
+  minimum-height: 800px;
+  overflow: visible;
 }
 
 
 .Game-status {
   @include WhiteCircle(600px);
   font-size: 22px;
+  margin-bottom: 200px; //space for the timeline with liquid-fire
 }
 
 .Game-players {
@@ -179,12 +182,12 @@ $gameboard-image-topbottom: -115px;
 .GameBoard-topInstruction {
   @include firstInstructions;
   top: 148px;
-  left: -240px;
+  left: -260px;
 }
 .GameBoard-bottomInstruction {
   @include firstInstructions;
   top: 557px;
-  left: -245px;
+  left: -265px;
 }
 
 .GameBoard-firstRoundInstructions {
