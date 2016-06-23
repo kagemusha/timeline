@@ -1,11 +1,8 @@
 import Ember from 'ember';
 
-const { computed, inject, isBlank } = Ember;
+const { inject, isBlank } = Ember;
 const cardCountRange = Array.from(Array(51).keys()).slice(1);
 
-const errorMsgs = {
-  "game-not-found": "No code found for <strong>"
-}
 export default Ember.Controller.extend({
   gameService: inject.service(),
   i18n: inject.service(),

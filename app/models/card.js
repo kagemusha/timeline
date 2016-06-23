@@ -1,7 +1,9 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 const { attr } = DS;
 const months = ["Jan","Feb", "Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
 export default DS.Model.extend({
   game: DS.belongsTo('game'),
   event: attr(),
