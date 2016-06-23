@@ -187,6 +187,13 @@ $gameboard-image-topbottom: -115px;
   top: 753px;
 }
 
+.GameBoard-firstRoundInstructions {
+  @include firstInstructions;
+  font-size: 1.6rem;
+  left: -200px;
+  top: 20px;
+}
+
 .GameBoard-timelineImage {
   border-radius: 50%;
   width: 80px;

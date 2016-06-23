@@ -73,15 +73,20 @@
       <div class="GameBoard-bottomImage">
         <img class="GameBoard-timelineImage" src="images/primitive-man.png" />
       </div>
+      {{#if showFirstRoundInstructions}}
+        <div class="GameBoard-firstRoundInstructions">
+          Click a dot to place a card
+        </div>
+      {{/if}}
       {{#if showFirstInstructions}}
         <div class="GameBoard-topInstruction">
-          Click dot to place after year {{cardYearLabel}}
+          Click dot to place after year {{firstTimelineCardYear}}
           {{fa-icon "arrow-right"}}
         </div>
       {{/if}}
       {{#if showFirstInstructions}}
         <div class="GameBoard-bottomInstruction">
-          Click dot to place before year {{cardYearLabel}}
+          Click dot to place before year {{firstTimelineCardYear}}
           {{fa-icon "arrow-right"}}
         </div>
       {{/if}}
