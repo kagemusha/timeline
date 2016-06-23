@@ -1,3 +1,5 @@
+const gameStartedDuration = 600;
+
 export default function(){
   this.transition(
     this.fromRoute('index'),
@@ -9,7 +11,7 @@ export default function(){
   this.transition(
     this.hasClass('game-started'),
     this.toValue(true),
-    this.use('crossFade',  { duration: 1000 }),
-    this.reverse('crossFade',  { duration: 1000 })
+    this.use('crossFade',  { duration: gameStartedDuration }),
+    this.reverse('crossFade',  { duration: gameStartedDuration })
   );
 }

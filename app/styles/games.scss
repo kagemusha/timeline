@@ -175,19 +175,19 @@ $gameboard-image-topbottom: -115px;
   position: absolute;
   z-index: 301;
   color: red;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: bold;
 }
 
 .GameBoard-topInstruction {
   @include firstInstructions;
   top: 148px;
-  left: -260px;
+  left: -270px;
 }
 .GameBoard-bottomInstruction {
   @include firstInstructions;
   top: 557px;
-  left: -265px;
+  left: -275px;
 }
 
 .GameBoard-firstRoundInstructions {
@@ -311,7 +311,7 @@ $placeCardButtonColor: black;
   font-weight: bold;
 }
 
-.GameBoard-status {
+.GameBoard-status .liquid-child {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -362,16 +362,15 @@ $placeCardButtonColor: black;
 }
 
 .GameBoard-winner {
-  @include card;
-  font-size: 1.2rem;
-  width: 22rem;
-  height: 12rem;
-  border-radius: 16px;
-  border: black 3px solid;
+  @include WhiteCircle(350px);
+  background: greenyellow;
+  margin-right: 4rem;
+  font-size: 2.0rem;
 }
 
 .GameBoard-winner-name {
-  font-size: 1.5rem;
+  color: red;
+  font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }

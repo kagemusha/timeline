@@ -15,7 +15,7 @@
     </div>
   </div>
   <div class="GameBoard-body">
-    <div class="GameBoard-status">
+    {{#liquid-bind game.lastCard use="toLeft" class="GameBoard-status" }}
       {{#if statusMsg}}
         <div class="GameBoard-statusMsg">{{statusMsg}}</div>
       {{/if}}
@@ -49,7 +49,7 @@
           {{/if}}
         </div>
       {{/if}}
-    </div>
+    {{/liquid-bind}}
 
     <div class="GameBoard-currentCardContainer">
       {{#if game.isComplete}}
@@ -62,9 +62,11 @@
           <div><button {{action "playAgain"}} class="GameBoard-playAgain">Play again</button></div>
         </div>
       {{else}}
-        <div class="GameBoard-currentCard">
-          <div class="GameBoard-currenctCard-event">{{game.currentCard.event}}</div>
-        </div>
+        {{#liquid-bind game.currentCard use="crossFade" duration=2000 as |currentCard| }}
+          <div class="GameBoard-currentCard">
+            <div class="GameBoard-currenctCard-event">{{currentCard.event}}</div>
+          </div>
+        {{/liquid-bind}}
       {{/if}}
     </div>
 
