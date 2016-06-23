@@ -157,12 +157,17 @@ button {
 
 .CreateGameForm {
   position: relative;
+  input[type=text] {
+    padding: 2px;
+  }
 }
 
 .CreateGameForm-cardCountSelect {
   width: 200px
 }
 
-.CreateGameForm-cardsetSelect {
-  width: 200px
+.CreateGameForm-select {
+ margin: 1rem -2rem;
+  width: 240px
 }
+

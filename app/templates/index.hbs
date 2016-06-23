@@ -8,29 +8,26 @@
         {{error-egg top="-10px" right="-200px" errors=createGameErrors errorKey="blankPlayerName" }}
         {{input class="CreateGameCode" placeholder="Game code" value=newGameCode}}
         {{error-egg top="170px" right="-200px" errors=createGameErrors errorKey="blankGameCode" }}
-        <div>&nbsp;<!--fake out flexbox --></div>
-
-        {{#power-select
+        <div class="CreateGameForm-select">
+          {{#power-select
           class="CreateGameForm-cardCountSelect"
           options=cardCountRange
           selected=initialCardCount
           onchange=(action (mut initialCardCount))
-        as |count| }}
-          {{pluralize count "card"}} to win
-        {{/power-select}}
-        <br/>
-        <br/>
-        {{#power-select
-        class="CreateGameForm-cardsetSelect"
-          options=cardsets
-          selected=cardset
-          onchange=(action (mut cardset))
-        as |cardset| }}
-          {{cardset.displayName}} cards
-        {{/power-select}}
-
-
-        <br/>
+          as |count| }}
+            {{pluralize count "card"}} to win
+          {{/power-select}}
+        </div>
+        <div class="CreateGameForm-select">
+          {{#power-select
+          class="CreateGameForm-cardsetSelect"
+            options=cardsets
+            selected=cardset
+            onchange=(action (mut cardset))
+          as |cardset| }}
+            {{cardset.displayName}} cards
+          {{/power-select}}
+        </div>
         <button class="CreateGameButton" {{action 'createGame'}} >Create Game</button>
       </div>
     </div>
