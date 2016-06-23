@@ -178,6 +178,32 @@ $gameboard-image-topbottom: -115px;
   @include GameBoardTimelineImage;
   bottom: $gameboard-image-topbottom;
 }
+@mixin firstInstructions {
+  position: absolute;
+  left: -300px;
+  top: 20px;
+  z-index: 301;
+  color: red;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.GameBoard-topInstruction {
+  @include firstInstructions;
+}
+.GameBoard-bottomInstruction {
+  @include firstInstructions;
+  left: -305px;
+  top: 753px;
+}
+
+.GameBoard-timelineImage {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  border: 4px white black;
+  z-index: 301;
+}
 
 .GameBoard-cardList {
   display: flex;

@@ -73,6 +73,18 @@
       <div class="GameBoard-bottomImage">
         <img class="GameBoard-timelineImage" src="images/primitive-man.png" />
       </div>
+      {{#if showFirstInstructions}}
+        <div class="GameBoard-topInstruction">
+          Click dot to place after year {{cardYearLabel}}
+          {{fa-icon "arrow-right"}}
+        </div>
+      {{/if}}
+      {{#if showFirstInstructions}}
+        <div class="GameBoard-bottomInstruction">
+          Click dot to place before year {{cardYearLabel}}
+          {{fa-icon "arrow-right"}}
+        </div>
+      {{/if}}
       <div class="listLine">&nbsp;</div>
       <ul class="GameBoard-cardList">
         {{place-card-button position=-1 isComplete=game.isComplete isMyTurn=isMyTurn placeCard="placeCard" }}

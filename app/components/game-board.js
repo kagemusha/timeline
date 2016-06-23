@@ -29,6 +29,14 @@ export default Ember.Component.extend({
     return game.cardAt(game.get('lastPlacement') + offset);
   }),
 
+  showFirstInstructions: computed('game.turnCount', 'isMyTurn', function(){
+    return this.get('game.turnCount') === 1 && this.get('isMyTurn')
+  }),
+  cardYearLabel: computed('game.lastCard.year', function() {
+    const year = this.get('game.lastCard.year');
+    const absYear = Math.abs(year);
+    return `${absYear} ${year < 0 ? " BC":""}`
+  }),
   winners: computed("game.winners", function(){
     const winners = this.get('game.winners').map(player => player.get('name')).join(", ");
     const lastWinner = winners.slice(-1)[0];
