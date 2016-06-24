@@ -11,6 +11,9 @@ export default DS.Model.extend({
   month: attr(),
   timeLabel: Ember.computed('year', 'month', function(){
     const month = months[this.get('month')];
-    return `${month ? month + " ":""}${this.get('year')}`
+    const year = this.get('year');
+    const bc = year < 0 ? " BC":"";
+    const absYear = Math.abs(year);
+    return `${month ? month + " ":""}${absYear}${bc}`
   })
 });

@@ -41,9 +41,8 @@ export default Ember.Component.extend({
     return  timelineLength > 1 && turnCount <= playerCount && this.get('isMyTurn');
   }),
 
-  firstTimelineCardYear: computed('game.timeline', function() {
-    const year = this.get('game').cardAt(0).get('year');
-    return `${Math.abs(year)} ${year < 0 ? " BC":""}`
+  firstTimelineCardTime: computed('game.timeline', function() {
+    return this.get('game').cardAt(0).get('timeLabel');
   }),
   winners: computed("game.winners", function(){
     const winners = this.get('game.winners').map(player => {
