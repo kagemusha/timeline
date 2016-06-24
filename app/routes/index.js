@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import config from '../config/environment';
 
-const imagesSrc = [
-  'http://www.china-mike.com/wp-content/uploads/2011/03/terracotta-army-warriors-xian.png',
-  'http://media.washtimes.com.s3.amazonaws.com/media/image/2015/03/18/caesar_2.jpg',
+const imageUrls = [
+  {src: 'images/octocat-white.png', href: 'https://github.com/kagemusha/timeline'},
   'http://images.fineartamerica.com/images-medium-large/8-christopher-columbus-granger.jpg',
-  'http://www.nasa.gov/images/content/2333main_MM_Image_Feature_19_rs4.jpg',
+  'http://media.washtimes.com.s3.amazonaws.com/media/image/2015/03/18/caesar_2.jpg',
+  'http://www.china-mike.com/wp-content/uploads/2011/03/terracotta-army-warriors-xian.png',
 ];
 
 export default Ember.Route.extend({
@@ -34,7 +34,7 @@ export default Ember.Route.extend({
     this._super(controller, model);
     controller.set('cardsets', model);
     controller.set('cardset', model.findBy('name', 'general'));
-    controller.set('imagesSrc', imagesSrc);
+    controller.set('imageUrls', imageUrls);
     controller.set('initialCardCount', config.cardCount);
     if (config.mockInput) {
       controller.setProperties({

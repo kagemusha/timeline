@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 const { inject } = Ember;
 
-const imagesSrc = [
-  'http://www.china-mike.com/wp-content/uploads/2011/03/terracotta-army-warriors-xian.png',
-  'http://media.washtimes.com.s3.amazonaws.com/media/image/2015/03/18/caesar_2.jpg',
-  'http://images.fineartamerica.com/images-medium-large/8-christopher-columbus-granger.jpg',
+const imageUrls = [
   'http://www.nasa.gov/images/content/2333main_MM_Image_Feature_19_rs4.jpg',
+  'http://images.fineartamerica.com/images-medium-large/8-christopher-columbus-granger.jpg',
+  'http://media.washtimes.com.s3.amazonaws.com/media/image/2015/03/18/caesar_2.jpg',
+  'http://www.china-mike.com/wp-content/uploads/2011/03/terracotta-army-warriors-xian.png',
 ];
 
 export default Ember.Route.extend({
@@ -28,7 +28,7 @@ export default Ember.Route.extend({
     controller.set('channelService', this.get('channelService'));
     controller.set('game', model);
     controller.set('player', this.get('gameService.player'));
-    controller.set('imagesSrc', imagesSrc);
+    controller.set('imageUrls', imageUrls);
   },
 
 });

@@ -1,9 +1,15 @@
 <div class="ImageTimeline-top">&nbsp;</div>
 <div class="ImageTimeline-line">&nbsp;</div>
 <div class="ImageTimeline-bottom">&nbsp;</div>
-{{#each imagesSrc as |src| }}
+{{#each imageUrls as |image| }}
   <div class="EventImage-container">
-    <img class="EventImage" src="{{src}}" />
+    {{#if image.href}}
+      <a href={{image.href}} target="_blank">
+        <img class="EventImage" src="{{image.src}}" />
+      </a>
+    {{else}}
+      <img class="EventImage" src="{{image}}" />
+    {{/if}}
   </div>
 {{/each}}
 
