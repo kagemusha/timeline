@@ -55,7 +55,8 @@
       {{#if game.isComplete}}
         <div class="GameBoard-winner {{if lost "lost"}}">
           {{#if noMoreCards}}
-            <div class="GameBoard-noMoreCardsMsg">No more cards, so game over!</div>
+            <div class="GameBoard-noMoreCardsMsg">Out of cards!</div>
+            <div class="GameBoard-noMoreCardsMsg">So game over!</div>
             <br/>
           {{/if}}
           <div class="GameBoard-winner-name">{{winners}}!</div>

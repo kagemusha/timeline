@@ -59,8 +59,8 @@ export default Ember.Component.extend({
   }),
 
   noMoreCards: computed("game.winners", function(){
-    const winner = this.get("game.winners").objectAt(0);
-    return winner && winner.get('cardsRemaining') > 0;
+    const aWinner = this.get("game.winners").objectAt(0);
+    return aWinner && aWinner.get('cardsRemaining') > 0;
   }),
 
   actions: {

@@ -362,7 +362,7 @@ $placeCardButtonColor: black;
 }
 
 .GameBoard-winner {
-  @include WhiteCircle(350px);
+  @include WhiteCircle(380px);
   background: greenyellow;
   margin-right: 4rem;
   font-size: 2.0rem;
